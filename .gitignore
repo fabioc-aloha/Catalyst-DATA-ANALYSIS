@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data Files (adjust based on your needs)
+data/raw/*.sav
+data/raw/*.xlsx
+data/raw/*.csv
+data/processed/*.parquet
+data/output/*.pdf
+data/output/*.png
+data/output/*.html
+
+# Sensitive Data
+data/sensitive/
+data/pii/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Documentation
+docs/_build/
+site/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# R (if using rpy2)
+.Rhistory
+.RData
+.Ruserdata
+
+# Temporary files
+*.tmp
+*.temp
+*.log
