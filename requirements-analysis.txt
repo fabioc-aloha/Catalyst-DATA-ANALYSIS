@@ -24,6 +24,11 @@ plotly>=5.23.0
 bokeh>=3.5.0
 altair>=5.4.0
 
+# Business Intelligence & Dashboards
+kaleido>=0.2.1  # For plotly static image export
+dash>=2.17.0  # Interactive web applications
+dash-bootstrap-components>=1.5.0  # Bootstrap components for Dash
+
 # Text Analytics & NLP
 nltk>=3.9
 textblob>=0.18.0
@@ -67,3 +72,8 @@ cryptography>=43.0.0
 click>=8.1.0
 pyyaml>=6.0.0
 toml>=0.10.0
+python-dotenv>=1.0.0  # Environment variable management for enterprise configs
+
+# Enterprise Features
+python-dateutil>=2.9.0  # Enhanced date/time handling for business analytics
+tabulate>=0.9.0  # Professional table formatting for reports

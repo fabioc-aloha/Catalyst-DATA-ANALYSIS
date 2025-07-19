@@ -5,10 +5,24 @@ Enterprise-grade utility functions for statistical analysis and data processing
 
 import pandas as pd
 import numpy as np
-import pyreadstat
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Union
 import logging
+
+# Optional imports with graceful fallback
+try:
+    import pyreadstat
+    PYREADSTAT_AVAILABLE = True
+except ImportError:
+    PYREADSTAT_AVAILABLE = False
+    logging.warning("pyreadstat not available - SPSS file loading will be limited")
+
+try:
+    from scipy import stats
+    SCIPY_AVAILABLE = True
+except ImportError:
+    SCIPY_AVAILABLE = False
+    logging.warning("scipy not available - advanced statistical tests will be limited")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -30,6 +44,9 @@ class DataLoader:
         Returns:
             Tuple of (DataFrame, metadata dictionary)
         """
+        if not PYREADSTAT_AVAILABLE:
+            raise ImportError("pyreadstat is required for SPSS file loading. Install with: pip install pyreadstat")
+        
         try:
             df, meta = pyreadstat.read_sav(str(file_path))
             
@@ -100,7 +117,182 @@ class DataLoader:
         return pd.DataFrame(data_dict)
 
 class StatisticalAnalyzer:
-    """Enterprise statistical analysis utilities"""
+    """Enterprise statistical analysis utilities with business intelligence capabilities"""
+    
+    @staticmethod
+    def business_kpi_analysis(data: pd.DataFrame, 
+                            metrics: List[str],
+                            time_column: str = 'date',
+                            baseline_period: int = 30) -> Dict:
+        """
+        Comprehensive business KPI analysis with trend detection
+        
+        Args:
+            data: DataFrame containing business metrics
+            metrics: List of KPI metric column names
+            time_column: Name of the time/date column
+            baseline_period: Number of periods for baseline comparison
+            
+        Returns:
+            Dictionary containing KPI analysis results
+        """
+        results = {}
+        
+        # Sort by time
+        data_sorted = data.sort_values(time_column)
+        
+        for metric in metrics:
+            if metric not in data_sorted.columns:
+                continue
+                
+            metric_data = data_sorted[metric].dropna()
+            if len(metric_data) < baseline_period:
+                continue
+            
+            # Calculate key statistics
+            current_value = metric_data.iloc[-1]
+            baseline_value = metric_data.iloc[-baseline_period:-1].mean()
+            overall_mean = metric_data.mean()
+            overall_std = metric_data.std()
+            
+            # Trend analysis
+            from scipy import stats
+            x = np.arange(len(metric_data))
+            slope, intercept, r_value, p_value, std_err = stats.linregress(x, metric_data)
+            
+            # Percentage change
+            pct_change = ((current_value - baseline_value) / baseline_value * 100) if baseline_value != 0 else 0
+            
+            # Volatility (coefficient of variation)
+            volatility = (overall_std / overall_mean * 100) if overall_mean != 0 else 0
+            
+            # Performance classification
+            performance = 'improving' if slope > 0 and p_value < 0.05 else \
+                         'declining' if slope < 0 and p_value < 0.05 else 'stable'
+            
+            results[metric] = {
+                'current_value': current_value,
+                'baseline_average': baseline_value,
+                'overall_average': overall_mean,
+                'percentage_change': pct_change,
+                'trend_slope': slope,
+                'trend_significance': p_value,
+                'r_squared': r_value**2,
+                'volatility': volatility,
+                'performance': performance,
+                'interpretation': f"{'Significant' if p_value < 0.05 else 'Non-significant'} {performance} trend"
+            }
+        
+        return results
+    
+    @staticmethod
+    def anomaly_detection(data: pd.Series, 
+                         method: str = 'iqr',
+                         threshold: float = 2.5) -> Dict:
+        """
+        Detect anomalies in business metrics
+        
+        Args:
+            data: Series containing metric values
+            method: Detection method ('iqr', 'zscore', 'modified_zscore')
+            threshold: Threshold for anomaly detection
+            
+        Returns:
+            Dictionary with anomaly detection results
+        """
+        data_clean = data.dropna()
+        
+        if method == 'iqr':
+            Q1 = data_clean.quantile(0.25)
+            Q3 = data_clean.quantile(0.75)
+            IQR = Q3 - Q1
+            lower_bound = Q1 - threshold * IQR
+            upper_bound = Q3 + threshold * IQR
+            anomalies = (data_clean < lower_bound) | (data_clean > upper_bound)
+            
+        elif method == 'zscore':
+            z_scores = np.abs((data_clean - data_clean.mean()) / data_clean.std())
+            anomalies = z_scores > threshold
+            
+        elif method == 'modified_zscore':
+            median = data_clean.median()
+            mad = np.median(np.abs(data_clean - median))
+            modified_z_scores = 0.6745 * (data_clean - median) / mad
+            anomalies = np.abs(modified_z_scores) > threshold
+        
+        anomaly_indices = data_clean[anomalies].index.tolist()
+        anomaly_values = data_clean[anomalies].tolist()
+        
+        return {
+            'anomaly_count': len(anomaly_indices),
+            'anomaly_percentage': len(anomaly_indices) / len(data_clean) * 100,
+            'anomaly_indices': anomaly_indices,
+            'anomaly_values': anomaly_values,
+            'method': method,
+            'threshold': threshold
+        }
+    
+    @staticmethod
+    def correlation_analysis(data: pd.DataFrame, 
+                           target_metric: str,
+                           feature_columns: Optional[List[str]] = None) -> Dict:
+        """
+        Analyze correlations between business metrics
+        
+        Args:
+            data: DataFrame containing metrics
+            target_metric: Target metric to analyze correlations with
+            feature_columns: Specific columns to analyze (if None, uses all numeric)
+            
+        Returns:
+            Dictionary with correlation analysis results
+        """
+        if feature_columns is None:
+            numeric_columns = data.select_dtypes(include=[np.number]).columns.tolist()
+            feature_columns = [col for col in numeric_columns if col != target_metric]
+        
+        correlations = {}
+        
+        for feature in feature_columns:
+            if feature in data.columns and target_metric in data.columns:
+                # Calculate Pearson correlation
+                corr_coef = data[feature].corr(data[target_metric])
+                
+                # Calculate significance
+                from scipy.stats import pearsonr
+                _, p_value = pearsonr(data[feature].dropna(), 
+                                    data[target_metric].dropna())
+                
+                # Interpret correlation strength
+                abs_corr = abs(corr_coef)
+                if abs_corr >= 0.7:
+                    strength = 'strong'
+                elif abs_corr >= 0.3:
+                    strength = 'moderate'
+                else:
+                    strength = 'weak'
+                
+                direction = 'positive' if corr_coef > 0 else 'negative'
+                
+                correlations[feature] = {
+                    'correlation': corr_coef,
+                    'p_value': p_value,
+                    'significant': p_value < 0.05,
+                    'strength': strength,
+                    'direction': direction,
+                    'interpretation': f"{strength.title()} {direction} correlation"
+                }
+        
+        # Sort by absolute correlation value
+        sorted_correlations = dict(sorted(correlations.items(), 
+                                        key=lambda x: abs(x[1]['correlation']), 
+                                        reverse=True))
+        
+        return {
+            'target_metric': target_metric,
+            'correlations': sorted_correlations,
+            'strongest_correlation': list(sorted_correlations.keys())[0] if sorted_correlations else None
+        }
     
     @staticmethod
     def check_assumptions(data: pd.DataFrame, 
