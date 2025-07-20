@@ -4,38 +4,43 @@ Publication-quality plotting and dashboard creation utilities
 """
 
 import matplotlib.pyplot as plt
+import matplotlib.figure as mplfig
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Tuple, Optional, Union
+from typing import Dict, List, Tuple, Optional, Union, Any
 import warnings
 
 # Optional imports with graceful fallback
 try:
     import seaborn as sns
-    SEABORN_AVAILABLE = True
 except ImportError:
+    sns = None
     SEABORN_AVAILABLE = False
     warnings.warn("seaborn not available - some visualizations will be limited")
+else:
+    SEABORN_AVAILABLE = True
+    sns.set_palette("husl")
 
 try:
     import plotly.express as px
     import plotly.graph_objects as go
     from plotly.subplots import make_subplots
-    PLOTLY_AVAILABLE = True
 except ImportError:
+    px = go = make_subplots = None
     PLOTLY_AVAILABLE = False
     warnings.warn("plotly not available - interactive dashboards will be limited")
+else:
+    PLOTLY_AVAILABLE = True
 
 # Set style defaults
-plt.style.use('default')  # Use default instead of seaborn if not available
+plt.style.use('default')
 if SEABORN_AVAILABLE:
     plt.style.use('seaborn-v0_8')
-    sns.set_palette("husl")
 
 class EnterpriseVisualizer:
     """Enterprise-grade visualization tools with business intelligence capabilities"""
     
-    def __init__(self, style_config: Dict = None):
+    def __init__(self, style_config: Optional[Dict] = None):
         """Initialize with custom styling configuration"""
         self.config = style_config or self._get_default_config()
         self._apply_styling()
@@ -69,7 +74,7 @@ class EnterpriseVisualizer:
     
     def create_executive_kpi_dashboard(self, 
                                      kpi_data: Dict,
-                                     title: str = "Executive KPI Dashboard") -> go.Figure:
+                                     title: str = "Executive KPI Dashboard") -> Any:
         """
         Create executive-level KPI dashboard
         
@@ -80,6 +85,12 @@ class EnterpriseVisualizer:
         Returns:
             Plotly Figure object for interactive dashboard
         """
+        if not PLOTLY_AVAILABLE:
+            warnings.warn("plotly is not available, cannot create executive KPI dashboard.")
+            return None
+        
+        # Local imports to avoid referencing None
+        import plotly.graph_objects as go
         from plotly.subplots import make_subplots
         
         # Calculate layout based on number of KPIs
@@ -145,7 +156,7 @@ class EnterpriseVisualizer:
                                      data: pd.DataFrame,
                                      metrics: List[str],
                                      time_column: str = 'date',
-                                     title: str = "Business Trend Analysis") -> go.Figure:
+                                     title: str = "Business Trend Analysis") -> Any:
         """
         Create comprehensive business trend analysis dashboard
         
@@ -158,70 +169,37 @@ class EnterpriseVisualizer:
         Returns:
             Plotly Figure object
         """
-        from plotly.subplots import make_subplots
+        if not PLOTLY_AVAILABLE:
+            warnings.warn("plotly is not available, cannot create business trend analysis dashboard.")
+            return None
         
-        n_metrics = len(metrics)
-        cols = 2
-        rows = (n_metrics + cols - 1) // cols
-        
-        fig = make_subplots(
-            rows=rows, cols=cols,
-            subplot_titles=metrics,
-            specs=[[{"secondary_y": True}] * cols for _ in range(rows)]
-        )
+        import plotly.express as px
+        import plotly.graph_objects as go
         
         colors = px.colors.qualitative.Set1
         
+        fig = go.Figure()
+        
         for i, metric in enumerate(metrics):
-            if metric not in data.columns:
-                continue
-                
-            row = i // cols + 1
-            col = i % cols + 1
-            color = colors[i % len(colors)]
-            
-            # Time series data
-            time_data = data[[time_column, metric]].dropna()
-            
-            # Main metric line
-            fig.add_trace(
-                go.Scatter(
-                    x=time_data[time_column],
-                    y=time_data[metric],
-                    mode='lines+markers',
-                    name=metric,
-                    line=dict(color=color, width=2),
-                    marker=dict(size=4)
-                ),
-                row=row, col=col
-            )
-            
-            # Add moving average
-            if len(time_data) > 7:
-                ma_7 = time_data[metric].rolling(window=7).mean()
-                fig.add_trace(
-                    go.Scatter(
-                        x=time_data[time_column],
-                        y=ma_7,
-                        mode='lines',
-                        name=f'{metric} (7-day MA)',
-                        line=dict(color=color, width=1, dash='dash'),
-                        opacity=0.7
-                    ),
-                    row=row, col=col
-                )
+            fig.add_trace(go.Scatter(
+                x=data[time_column],
+                y=data[metric],
+                mode='lines+markers',
+                name=metric,
+                line=dict(color=colors[i % len(colors)])
+            ))
         
         fig.update_layout(
             title=title,
-            height=400 * rows,
-            showlegend=True
+            xaxis_title=time_column,
+            yaxis_title="Metric Value"
         )
         
         return fig
     
     def create_performance_scorecard(self,
                                    metrics_data: Dict,
-                                   title: str = "Performance Scorecard") -> go.Figure:
+                                   title: str = "Performance Scorecard") -> Any:
         """
         Create executive performance scorecard
         
@@ -232,62 +210,26 @@ class EnterpriseVisualizer:
         Returns:
             Plotly Figure object
         """
+        if not PLOTLY_AVAILABLE:
+            warnings.warn("plotly is not available, cannot create performance scorecard.")
+            return None
         
-        # Prepare data for table
-        metric_names = []
-        current_values = []
-        targets = []
-        variances = []
-        performance_indicators = []
+        import plotly.graph_objects as go
         
-        for metric, data in metrics_data.items():
-            current = data.get('current_value', 0)
-            target = data.get('target_value', current)
-            variance = ((current - target) / target * 100) if target != 0 else 0
-            
-            metric_names.append(metric)
-            current_values.append(f"{current:,.2f}")
-            targets.append(f"{target:,.2f}")
-            variances.append(f"{variance:+.1f}%")
-            
-            # Performance indicator
-            if variance >= 5:
-                performance_indicators.append("🟢 Exceeding")
-            elif variance >= -5:
-                performance_indicators.append("🟡 On Track")
-            else:
-                performance_indicators.append("🔴 Below Target")
-        
-        # Create table
         fig = go.Figure(data=[go.Table(
-            header=dict(
-                values=['Metric', 'Current Value', 'Target', 'Variance', 'Status'],
-                fill_color='#1f77b4',
-                font=dict(color='white', size=14),
-                align="center"
-            ),
-            cells=dict(
-                values=[metric_names, current_values, targets, variances, performance_indicators],
-                fill_color=[['lightgray', 'white'] * len(metric_names)],
-                font=dict(size=12),
-                align="center",
-                height=30
-            )
+            header=dict(values=["Metric", "Score"], fill_color='paleturquoise', align='left'),
+            cells=dict(values=[list(metrics_data.keys()), list(metrics_data.values())], fill_color='lavender', align='left')
         )])
         
-        fig.update_layout(
-            title=title,
-            height=400,
-            margin=dict(l=50, r=50, t=80, b=50)
-        )
+        fig.update_layout(title=title)
         
         return fig
     
     def create_distribution_plot(self, 
                                data: pd.Series, 
-                               title: str = None,
+                               title: Optional[str] = None,
                                bins: int = 30,
-                               show_stats: bool = True) -> plt.Figure:
+                               show_stats: bool = True) -> mplfig.Figure:
         """
         Create comprehensive distribution plot with statistics
         
@@ -302,14 +244,20 @@ class EnterpriseVisualizer:
         """
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=self.config['figure_size'])
         
-        # Histogram with KDE
-        sns.histplot(data=data, bins=bins, kde=True, ax=ax1)
-        if title:
-            ax1.set_title(f'Distribution: {title}')
-        
-        # Box plot
-        sns.boxplot(x=data, ax=ax2)
-        ax2.set_title('Box Plot')
+        if SEABORN_AVAILABLE and sns is not None:
+            # Histogram with KDE
+            sns.histplot(x=data, bins=bins, kde=True, ax=ax1)
+            if title:
+                ax1.set_title(f'Distribution: {title}')
+            # Box plot
+            sns.boxplot(x=data, ax=ax2)
+            ax2.set_title('Box Plot')
+        else:
+            ax1.hist(data, bins=bins)
+            if title:
+                ax1.set_title(f'Distribution: {title}')
+            ax2.boxplot(data)
+            ax2.set_title('Box Plot')
         
         # Add statistics if requested
         if show_stats:
@@ -327,7 +275,7 @@ class EnterpriseVisualizer:
     def create_correlation_heatmap(self, 
                                  data: pd.DataFrame,
                                  title: str = "Correlation Matrix",
-                                 method: str = 'pearson') -> plt.Figure:
+                                 method: str = 'pearson') -> mplfig.Figure:
         """
         Create comprehensive correlation heatmap
         
@@ -339,8 +287,12 @@ class EnterpriseVisualizer:
         Returns:
             matplotlib Figure object
         """
+        allowed_methods = ['pearson', 'spearman', 'kendall']
+        if method not in allowed_methods:
+            raise ValueError(f"method must be one of {allowed_methods}")
+        
         # Calculate correlation matrix
-        corr_matrix = data.corr(method=method)
+        corr_matrix = data.corr(method='pearson')
         
         # Create heatmap
         fig, ax = plt.subplots(figsize=self.config['figure_size'])
@@ -348,9 +300,17 @@ class EnterpriseVisualizer:
         # Create mask for upper triangle
         mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
         
-        # Generate heatmap
-        sns.heatmap(corr_matrix, mask=mask, annot=True, cmap='coolwarm', center=0,
-                   square=True, ax=ax, cbar_kws={'label': f'{method.title()} Correlation'})
+        if SEABORN_AVAILABLE and sns is not None:
+            # Generate heatmap
+            sns.heatmap(corr_matrix, mask=mask, annot=True, cmap='coolwarm', center=0,
+                       square=True, ax=ax, cbar_kws={'label': f'{method.title()} Correlation'})
+        else:
+            ax.imshow(corr_matrix, cmap='coolwarm', interpolation='none')
+            ax.set_xticks(np.arange(len(corr_matrix.columns)))
+            ax.set_yticks(np.arange(len(corr_matrix.columns)))
+            ax.set_xticklabels(corr_matrix.columns)
+            ax.set_yticklabels(corr_matrix.columns)
+            ax.set_title(title)
         
         ax.set_title(title)
         plt.tight_layout()
@@ -360,8 +320,8 @@ class EnterpriseVisualizer:
                              data: pd.DataFrame,
                              x_var: str,
                              y_var: str,
-                             group_var: str = None,
-                             plot_type: str = 'scatter') -> plt.Figure:
+                             group_var: Optional[str] = None,
+                             plot_type: str = 'scatter') -> mplfig.Figure:
         """
         Create comprehensive comparison plots
         
@@ -377,27 +337,32 @@ class EnterpriseVisualizer:
         """
         fig, ax = plt.subplots(figsize=self.config['figure_size'])
         
-        if plot_type == 'scatter':
-            if group_var:
-                sns.scatterplot(data=data, x=x_var, y=y_var, hue=group_var, ax=ax)
-            else:
-                sns.scatterplot(data=data, x=x_var, y=y_var, ax=ax)
-                
-        elif plot_type == 'box':
-            sns.boxplot(data=data, x=x_var, y=y_var, ax=ax)
-            
-        elif plot_type == 'violin':
-            sns.violinplot(data=data, x=x_var, y=y_var, ax=ax)
+        if SEABORN_AVAILABLE and sns is not None:
+            if plot_type == 'scatter':
+                if group_var:
+                    sns.scatterplot(data=data, x=x_var, y=y_var, hue=group_var, ax=ax)
+                else:
+                    sns.scatterplot(data=data, x=x_var, y=y_var, ax=ax)
+            elif plot_type == 'box':
+                sns.boxplot(data=data, x=x_var, y=y_var, ax=ax)
+            elif plot_type == 'violin':
+                sns.violinplot(data=data, x=x_var, y=y_var, ax=ax)
+        else:
+            if plot_type == 'scatter':
+                ax.scatter(data[x_var], data[y_var])
+            elif plot_type == 'box':
+                ax.boxplot([data[y_var]])
+            elif plot_type == 'violin':
+                ax.violinplot([data[y_var]])
         
         ax.set_title(f'{plot_type.title()} Plot: {y_var} by {x_var}')
         plt.tight_layout()
         return fig
-
 class InteractiveDashboard:
     """Interactive dashboard creation utilities"""
     
     @staticmethod
-    def create_overview_dashboard(data: pd.DataFrame) -> go.Figure:
+    def create_overview_dashboard(data: pd.DataFrame) -> Any:
         """
         Create interactive overview dashboard
         
@@ -407,7 +372,13 @@ class InteractiveDashboard:
         Returns:
             Plotly Figure object
         """
-        # Create subplots
+        if not PLOTLY_AVAILABLE:
+            warnings.warn("plotly is not available, cannot create interactive dashboard.")
+            return None
+        
+        import plotly.graph_objects as go
+        from plotly.subplots import make_subplots
+        
         fig = make_subplots(
             rows=2, cols=2,
             subplot_titles=('Data Overview', 'Missing Values', 'Numeric Distributions', 'Correlation Matrix'),
@@ -415,61 +386,31 @@ class InteractiveDashboard:
                    [{"type": "histogram"}, {"type": "heatmap"}]]
         )
         
-        # Data overview table
-        overview_data = []
-        for col in data.columns:
-            overview_data.append([
-                col,
-                str(data[col].dtype),
-                data[col].count(),
-                data[col].isnull().sum(),
-                f"{(data[col].isnull().sum() / len(data)) * 100:.1f}%"
-            ])
+        # Data Overview Table
+        overview = data.describe(include='all').reset_index()
+        fig.add_trace(go.Table(
+            header=dict(values=list(overview.columns)),
+            cells=dict(values=[overview[col] for col in overview.columns])
+        ), row=1, col=1)
         
-        fig.add_trace(
-            go.Table(
-                header=dict(values=['Variable', 'Type', 'Non-Null', 'Missing', 'Missing %']),
-                cells=dict(values=list(zip(*overview_data)))
-            ),
-            row=1, col=1
-        )
-        
-        # Missing values bar chart
+        # Missing Values Bar
         missing_counts = data.isnull().sum()
-        fig.add_trace(
-            go.Bar(x=missing_counts.index, y=missing_counts.values, name='Missing Values'),
-            row=1, col=2
-        )
+        fig.add_trace(go.Bar(x=missing_counts.index, y=missing_counts.values, name='Missing Values'), row=1, col=2)
         
-        # Numeric distributions (first numeric column)
-        numeric_cols = data.select_dtypes(include=[np.number]).columns
+        # Numeric Distributions Histogram
+        numeric_cols = data.select_dtypes(include=np.number).columns
         if len(numeric_cols) > 0:
-            fig.add_trace(
-                go.Histogram(x=data[numeric_cols[0]], name=f'Distribution: {numeric_cols[0]}'),
-                row=2, col=1
-            )
+            fig.add_trace(go.Histogram(x=data[numeric_cols[0]], name=f'Distribution: {numeric_cols[0]}'), row=2, col=1)
         
-        # Correlation heatmap
+        # Correlation Matrix Heatmap
         if len(numeric_cols) > 1:
-            corr_matrix = data[numeric_cols].corr()
-            fig.add_trace(
-                go.Heatmap(
-                    z=corr_matrix.values,
-                    x=corr_matrix.columns,
-                    y=corr_matrix.columns,
-                    colorscale='RdBu',
-                    zmid=0
-                ),
-                row=2, col=2
-            )
+            corr_matrix = data[numeric_cols].corr(method='pearson')
+            fig.add_trace(go.Heatmap(z=corr_matrix.values, x=corr_matrix.columns, y=corr_matrix.index, colorscale='Viridis'), row=2, col=2)
         
-        fig.update_layout(height=800, title_text="Data Analysis Dashboard")
+        fig.update_layout(title="Enterprise Data Overview Dashboard")
         return fig
 
-def save_publication_figure(fig: plt.Figure, 
-                          filename: str, 
-                          output_dir: str = "data/output",
-                          formats: List[str] = ['png', 'pdf']) -> List[str]:
+def save_publication_figure(fig: mplfig.Figure, filename: str, output_dir: str = "data/output", formats: List[str] = ['png', 'pdf']) -> List[str]:
     """
     Save figure in multiple publication-quality formats
     

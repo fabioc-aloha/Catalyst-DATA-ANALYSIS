@@ -8,14 +8,14 @@ import numpy as np
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Union
 import logging
+import warnings
 
 # Optional imports with graceful fallback
 try:
     import pyreadstat
-    PYREADSTAT_AVAILABLE = True
 except ImportError:
-    PYREADSTAT_AVAILABLE = False
-    logging.warning("pyreadstat not available - SPSS file loading will be limited")
+    pyreadstat = None
+    warnings.warn("pyreadstat not available - cannot read SPSS files")
 
 try:
     from scipy import stats
@@ -44,38 +44,32 @@ class DataLoader:
         Returns:
             Tuple of (DataFrame, metadata dictionary)
         """
-        if not PYREADSTAT_AVAILABLE:
-            raise ImportError("pyreadstat is required for SPSS file loading. Install with: pip install pyreadstat")
+        if pyreadstat is None:
+            raise ImportError("pyreadstat is required to read SPSS files")
+        df, meta = pyreadstat.read_sav(str(file_path))
         
-        try:
-            df, meta = pyreadstat.read_sav(str(file_path))
-            
-            if preserve_metadata:
-                # Create comprehensive metadata dictionary
-                metadata = {
-                    'variable_labels': meta.column_names_to_labels,
-                    'value_labels': meta.variable_value_labels,
-                    'missing_ranges': meta.missing_ranges,
-                    'variable_types': {col: str(df[col].dtype) for col in df.columns},
-                    'file_info': {
-                        'rows': len(df),
-                        'columns': len(df.columns),
-                        'file_path': str(file_path)
-                    }
+        if preserve_metadata:
+            # Create comprehensive metadata dictionary
+            metadata = {
+                'variable_labels': meta.column_names_to_labels,
+                'value_labels': meta.variable_value_labels,
+                'missing_ranges': meta.missing_ranges,
+                'variable_types': {col: str(df[col].dtype) for col in df.columns},
+                'file_info': {
+                    'rows': len(df),
+                    'columns': len(df.columns),
+                    'file_path': str(file_path)
                 }
+            }
+            
+            logger.info(f"Loaded SPSS file: {len(df)} rows, {len(df.columns)} columns")
+            return df, metadata
+        else:
+            return df, {}
                 
-                logger.info(f"Loaded SPSS file: {len(df)} rows, {len(df.columns)} columns")
-                return df, metadata
-            else:
-                return df, {}
-                
-        except Exception as e:
-            logger.error(f"Error loading SPSS file {file_path}: {str(e)}")
-            raise
-
     @staticmethod
     def create_data_dictionary(df: pd.DataFrame, 
-                             metadata: Dict = None) -> pd.DataFrame:
+                             metadata: Optional[Dict] = None) -> pd.DataFrame:
         """
         Create comprehensive data dictionary for dataset
         
@@ -156,9 +150,7 @@ class StatisticalAnalyzer:
             overall_std = metric_data.std()
             
             # Trend analysis
-            from scipy import stats
-            x = np.arange(len(metric_data))
-            slope, intercept, r_value, p_value, std_err = stats.linregress(x, metric_data)
+            trend_results = StatisticalAnalyzer.analyze_trend(metric_data)
             
             # Percentage change
             pct_change = ((current_value - baseline_value) / baseline_value * 100) if baseline_value != 0 else 0
@@ -167,70 +159,62 @@ class StatisticalAnalyzer:
             volatility = (overall_std / overall_mean * 100) if overall_mean != 0 else 0
             
             # Performance classification
-            performance = 'improving' if slope > 0 and p_value < 0.05 else \
-                         'declining' if slope < 0 and p_value < 0.05 else 'stable'
+            performance = 'improving' if trend_results['slope'] > 0 and trend_results['p_value'] < 0.05 else \
+                         'declining' if trend_results['slope'] < 0 and trend_results['p_value'] < 0.05 else 'stable'
             
             results[metric] = {
                 'current_value': current_value,
                 'baseline_average': baseline_value,
                 'overall_average': overall_mean,
                 'percentage_change': pct_change,
-                'trend_slope': slope,
-                'trend_significance': p_value,
-                'r_squared': r_value**2,
+                'trend_slope': trend_results['slope'],
+                'trend_significance': trend_results['p_value'],
+                'r_squared': trend_results['r_squared'],
                 'volatility': volatility,
                 'performance': performance,
-                'interpretation': f"{'Significant' if p_value < 0.05 else 'Non-significant'} {performance} trend"
+                'interpretation': f"{'Significant' if trend_results['p_value'] < 0.05 else 'Non-significant'} {performance} trend"
             }
         
         return results
     
     @staticmethod
-    def anomaly_detection(data: pd.Series, 
-                         method: str = 'iqr',
-                         threshold: float = 2.5) -> Dict:
-        """
-        Detect anomalies in business metrics
-        
-        Args:
-            data: Series containing metric values
-            method: Detection method ('iqr', 'zscore', 'modified_zscore')
-            threshold: Threshold for anomaly detection
-            
-        Returns:
-            Dictionary with anomaly detection results
-        """
-        data_clean = data.dropna()
-        
-        if method == 'iqr':
-            Q1 = data_clean.quantile(0.25)
-            Q3 = data_clean.quantile(0.75)
-            IQR = Q3 - Q1
-            lower_bound = Q1 - threshold * IQR
-            upper_bound = Q3 + threshold * IQR
-            anomalies = (data_clean < lower_bound) | (data_clean > upper_bound)
-            
-        elif method == 'zscore':
-            z_scores = np.abs((data_clean - data_clean.mean()) / data_clean.std())
-            anomalies = z_scores > threshold
-            
-        elif method == 'modified_zscore':
-            median = data_clean.median()
-            mad = np.median(np.abs(data_clean - median))
-            modified_z_scores = 0.6745 * (data_clean - median) / mad
-            anomalies = np.abs(modified_z_scores) > threshold
-        
-        anomaly_indices = data_clean[anomalies].index.tolist()
-        anomaly_values = data_clean[anomalies].tolist()
-        
+    def analyze_trend(data: pd.Series) -> Dict:
+        from scipy.stats import linregress
+        x = np.arange(len(data))
+        slope, intercept, r_value, p_value, std_err = tuple(linregress(x, data.to_numpy()))
+        slope = float(slope)
+        intercept = float(intercept)
+        r_value = float(r_value)
+        p_value = float(p_value)
+        std_err = float(std_err)
+        if slope > 0 and p_value < 0.05:
+            performance = 'improving'
+        elif slope < 0 and p_value < 0.05:
+            performance = 'declining'
+        else:
+            performance = 'stable'
         return {
-            'anomaly_count': len(anomaly_indices),
-            'anomaly_percentage': len(anomaly_indices) / len(data_clean) * 100,
-            'anomaly_indices': anomaly_indices,
-            'anomaly_values': anomaly_values,
-            'method': method,
-            'threshold': threshold
+            'slope': slope,
+            'intercept': intercept,
+            'r_squared': r_value**2,
+            'p_value': p_value,
+            'performance': performance,
+            'interpretation': f"{'Significant' if p_value < 0.05 else 'Non-significant'} {performance} trend"
         }
+    
+    @staticmethod
+    def detect_anomalies(data: pd.Series) -> Tuple[List[int], List[float]]:
+        arr = data.dropna().to_numpy()
+        median = np.median(arr)
+        mad = np.median(np.abs(arr - median))
+        if mad == 0:
+            modified_z_scores = np.zeros_like(arr)
+        else:
+            modified_z_scores = 0.6745 * (arr - median) / mad
+        anomalies = np.abs(modified_z_scores) > 3.5
+        anomaly_indices = np.where(anomalies)[0].tolist()
+        anomaly_values = arr[anomalies].tolist()
+        return anomaly_indices, anomaly_values
     
     @staticmethod
     def correlation_analysis(data: pd.DataFrame, 
@@ -248,7 +232,7 @@ class StatisticalAnalyzer:
             Dictionary with correlation analysis results
         """
         if feature_columns is None:
-            numeric_columns = data.select_dtypes(include=[np.number]).columns.tolist()
+            numeric_columns = data.select_dtypes(include=['number']).columns.tolist()
             feature_columns = [col for col in numeric_columns if col != target_metric]
         
         correlations = {}
@@ -260,9 +244,16 @@ class StatisticalAnalyzer:
                 
                 # Calculate significance
                 from scipy.stats import pearsonr
-                _, p_value = pearsonr(data[feature].dropna(), 
-                                    data[target_metric].dropna())
-                
+                _, p_value = pearsonr(data[feature].dropna(), data[target_metric].dropna())
+                import numpy as np
+                if isinstance(p_value, (tuple, list, np.ndarray)):
+                    val = p_value[0]
+                else:
+                    val = p_value
+                if isinstance(val, (float, int, np.floating)):
+                    p_value_float = float(val)
+                else:
+                    p_value_float = 1.0
                 # Interpret correlation strength
                 abs_corr = abs(corr_coef)
                 if abs_corr >= 0.7:
@@ -271,13 +262,11 @@ class StatisticalAnalyzer:
                     strength = 'moderate'
                 else:
                     strength = 'weak'
-                
                 direction = 'positive' if corr_coef > 0 else 'negative'
-                
                 correlations[feature] = {
                     'correlation': corr_coef,
-                    'p_value': p_value,
-                    'significant': p_value < 0.05,
+                    'p_value': p_value_float,
+                    'significant': p_value_float < 0.05,
                     'strength': strength,
                     'direction': direction,
                     'interpretation': f"{strength.title()} {direction} correlation"
@@ -350,6 +339,28 @@ class StatisticalAnalyzer:
         d = (group1.mean() - group2.mean()) / pooled_std
         
         return d
+    
+    @staticmethod
+    def chi_square_test(data: pd.DataFrame, col1: str, col2: str) -> Dict:
+        from scipy.stats import chi2_contingency
+        contingency_table = pd.crosstab(data[col1], data[col2])
+        chi2, p_value, dof, expected = chi2_contingency(contingency_table)
+        import numpy as np
+        if isinstance(p_value, (tuple, list, np.ndarray)):
+            val = p_value[0]
+        else:
+            val = p_value
+        if isinstance(val, (float, int, np.floating)):
+            p_value_float = float(val)
+        else:
+            p_value_float = 1.0
+        return {
+            'chi2': chi2,
+            'p_value': p_value_float,
+            'dof': dof,
+            'expected': expected,
+            'significant': p_value_float < 0.05
+        }
 
 def load_environment_config() -> Dict:
     """Load configuration from environment variables"""
