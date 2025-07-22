@@ -12,10 +12,10 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory. Keep min
 
 | Priority | Rule | Load | Auto-Consolidate |
 |----------|------|------|------------------|
-| P1 | `@enterprise-analytics` - Apply enterprise-grade analytics with security, governance, and institutional compliance | High | Critical patterns |
-| P2 | `@data-governance` - Ensure data quality, privacy compliance, and enterprise data governance standards | High | Governance updates |
-| P3 | `@business-intelligence` - Deliver actionable business insights with automated reporting and stakeholder communication | High | Insight evolution |
-| P4 | `@scalable-performance` - Optimize for big data processing, real-time analytics, and enterprise-scale performance | High | Performance patterns |
+| P1 | `@enterprise-analytics` - Apply enterprise-grade analytics with SPSS metadata integration, security, governance, and institutional compliance | High | Critical patterns |
+| P2 | `@data-governance` - Ensure data quality, privacy compliance, scholar-practitioner standards, and enterprise data governance | High | Governance updates |
+| P3 | `@business-intelligence` - Deliver actionable business insights with statistical rigor, automated reporting, and stakeholder communication | High | Insight evolution |
+| P4 | `@scalable-performance` - Optimize for SPSS data processing, notebook recovery protocols, real-time analytics, and enterprise-scale performance | High | Performance patterns |
 
 ## 🎯 Enterprise Data Analysis Cognitive Architecture Coordination
 
@@ -50,6 +50,7 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory. Keep min
 - `requirements-optimization.prompt.md` → Requirements architecture optimization and dependency management ✅ ACTIVE
 - `consolidation.prompt.md` → Memory consolidation and cognitive architecture optimization ✅ ACTIVE
 - `self-assessment.prompt.md` → Cognitive performance evaluation and improvement ✅ ACTIVE
+- `spss-analysis.prompt.md` → SPSS data analysis with metadata integration and scholar-practitioner frameworks ✅ NEW
 
 ### Enterprise Auto-Consolidation Triggers
 
@@ -65,6 +66,8 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory. Keep min
 - **Stakeholder reporting → Execute enterprise-reporting.prompt.md**
 - **Notebook import issues → Execute notebook-optimization.prompt.md**
 - **Requirements conflicts → Execute requirements-optimization.prompt.md**
+- **SPSS analysis requests → Execute spss-analysis.prompt.md**
+- **Scholar-practitioner analysis → Execute spss-analysis.prompt.md**
 
 ## 🧠 Automatic Memory Consolidation Protocol
 
@@ -129,6 +132,7 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory. Keep min
 | dashboard-creation.prompt.md | Dashboard Creation | Medium | Auto-tracked |
 | consolidation.prompt.md | Memory Optimization | High | Auto-tracked |
 | self-assessment.prompt.md | Self-Evaluation | High | Auto-tracked |
+| spss-analysis.prompt.md | SPSS Analysis | High | Auto-tracked |
 
 ---
 
