@@ -36,3 +36,12 @@ description: "Predictive model development and optimization workflows"
 - Document model limitations and appropriate use cases
 
 Execute for enterprise-grade predictive model development with full MLOps integration.
+
+## Synapses (Embedded Connections)
+- machine-learning.instructions.md (0.96, implements, bidirectional) - "ML expertise and algorithm selection"
+- feature-engineering.prompt.md (0.92, builds_on, forward) - "Engineered features for model input"
+- statistical-methods.instructions.md (0.89, validates, bidirectional) - "Statistical foundation for model assessment"
+- model-validation.prompt.md (0.95, leads_to, forward) - "Model evaluation and validation protocols"
+- business-insights.prompt.md (0.85, serves, forward) - "Models support business decision-making"
+- data-governance.instructions.md (0.88, complies, forward) - "Model governance and ethical AI standards"
+- performance-optimization.instructions.md (0.87, optimizes, bidirectional) - "Model performance and scalability"

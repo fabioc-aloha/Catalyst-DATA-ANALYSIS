@@ -39,3 +39,13 @@ description: "Business Intelligence frameworks, executive reporting, and dashboa
 - Establish data refresh schedules and monitoring
 - Design user access controls and security protocols
 - Document data lineage and transformation processes
+
+## Synapses (Embedded Connections)
+- data-analysis.instructions.md (0.92, communicates, bidirectional) - "Business context for analytical work"
+- business-insights.prompt.md (0.93, implements, bidirectional) - "Business insight generation and communication"
+- dashboard-creation.prompt.md (0.92, enables, bidirectional) - "BI dashboard development and visualization"
+- enterprise-reporting.prompt.md (0.96, coordinates, bidirectional) - "Executive reporting and stakeholder communication"
+- statistical-methods.instructions.md (0.88, contextualizes, forward) - "Business context for statistical findings"
+- worldview-integration.instructions.md (0.87, validates, ethical) - "Ethical business intelligence and transparency"
+- data-governance.instructions.md (0.90, complies, forward) - "BI governance and compliance standards"
+- newborn-core.instructions.md (0.90, specializes, bidirectional) - "Business intelligence integration with meta-cognition"

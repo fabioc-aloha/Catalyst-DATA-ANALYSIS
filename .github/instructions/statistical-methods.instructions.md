@@ -47,3 +47,13 @@ description: "Advanced statistical methods and experimental design"
 - Use non-parametric alternatives when assumptions are violated
 - Conduct power analysis for sample size planning and interpretation
 - Generate comprehensive statistical summaries with methodological considerations
+
+## Synapses (Embedded Connections)
+- data-analysis.instructions.md (0.96, enhances, bidirectional) - "Statistical rigor for data analysis workflows"
+- empirical-validation.instructions.md (0.94, validates, bidirectional) - "Research evidence and statistical validation"
+- newborn-core.instructions.md (0.93, specializes, bidirectional) - "Statistical methodology integration with meta-cognition"
+- bootstrap-learning.instructions.md (0.93, deepens, bidirectional) - "Statistical learning and methodological expertise"
+- statistical-analysis.prompt.md (0.96, implements, bidirectional) - "Statistical analysis execution and validation"
+- spss-analysis.prompt.md (0.94, applies, bidirectional) - "SPSS statistical methodology implementation"
+- business-intelligence.instructions.md (0.91, informs, forward) - "Statistical evidence for business decisions"
+- machine-learning.instructions.md (0.90, foundation, bidirectional) - "Statistical foundation for ML methods"

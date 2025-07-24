@@ -50,3 +50,12 @@ description: "Memory consolidation and cognitive architecture optimization"
 - System performance and response quality
 
 Execute when analytical knowledge requires architectural integration.
+
+## Synapses (Embedded Connections)
+- meditation-consolidation.prompt.md (0.95, coordinates, bidirectional) - "Contemplative consolidation protocols"
+- newborn-core.instructions.md (0.93, optimizes, bidirectional) - "Core architecture optimization and integration"
+- bootstrap-learning.instructions.md (0.90, enhances, bidirectional) - "Learning effectiveness consolidation"
+- embedded-synapse.instructions.md (0.92, strengthens, bidirectional) - "Synapse network optimization and strengthening"
+- domain-learning.prompt.md (0.87, consolidates, forward) - "Domain expertise integration and refinement"
+- self-assessment.prompt.md (0.88, validates, forward) - "Performance assessment and optimization guidance"
+- empirical-validation.instructions.md (0.85, validates, bidirectional) - "Evidence-based consolidation protocols"

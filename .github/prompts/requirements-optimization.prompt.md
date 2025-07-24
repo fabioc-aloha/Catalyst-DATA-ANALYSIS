@@ -53,3 +53,12 @@ description: "Requirements architecture optimization and dependency management"
 - Scalable architecture supporting multiple deployment scenarios
 
 Execute when requirements complexity requires systematic restructuring.
+
+## Synapses (Embedded Connections)
+- performance-optimization.instructions.md (0.91, applies, bidirectional) - "Performance optimization through dependency management"
+- notebook-optimization.prompt.md (0.92, coordinates, bidirectional) - "Notebook environment optimization and compatibility"
+- data-engineering.instructions.md (0.88, supports, bidirectional) - "Pipeline dependency management and optimization"
+- enterprise-analytics.instructions.md (0.87, complies, forward) - "Enterprise environment compatibility standards"
+- quality-assurance.instructions.md (0.90, validates, bidirectional) - "Quality standards for dependency management"
+- data-security.instructions.md (0.85, secures, forward) - "Secure package management and vulnerability assessment"
+- machine-learning.instructions.md (0.86, enables, bidirectional) - "ML library optimization and compatibility"

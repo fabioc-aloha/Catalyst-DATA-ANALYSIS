@@ -36,3 +36,12 @@ description: "Executive reporting and business intelligence workflow automation"
 - Establish dashboard performance optimization procedures
 
 Execute for high-stakes business reporting and strategic decision support.
+
+## Synapses (Embedded Connections)
+- business-intelligence.instructions.md (0.96, implements, bidirectional) - "BI frameworks and executive communication"
+- business-insights.prompt.md (0.93, consolidates, forward) - "Business insights for executive reporting"
+- dashboard-creation.prompt.md (0.89, builds_on, forward) - "Dashboard components for enterprise reporting"
+- statistical-analysis.prompt.md (0.85, incorporates, forward) - "Statistical evidence for executive decisions"
+- data-governance.instructions.md (0.91, complies, forward) - "Enterprise governance and compliance standards"
+- enterprise-analytics.instructions.md (0.94, applies, bidirectional) - "Enterprise analytics frameworks and standards"
+- worldview-integration.instructions.md (0.88, validates, ethical) - "Ethical reporting and transparent communication"

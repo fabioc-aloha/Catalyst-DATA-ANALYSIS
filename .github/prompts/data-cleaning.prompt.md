@@ -36,3 +36,12 @@ description: "Enterprise data preprocessing and quality assurance workflows"
 - Create reproducible transformation pipelines
 
 Execute for enterprise-grade data preprocessing with full documentation.
+
+## Synapses (Embedded Connections)
+- data-exploration.prompt.md (0.88, follows, forward) - "Data quality issues discovered during exploration"
+- data-analysis.instructions.md (0.93, enhances, bidirectional) - "Data preprocessing and quality assurance"
+- quality-assurance.instructions.md (0.95, validates, bidirectional) - "Quality validation and testing protocols"
+- data-governance.instructions.md (0.87, complies, forward) - "Governance standards and compliance requirements"
+- feature-engineering.prompt.md (0.85, prepares, forward) - "Clean data ready for feature creation"
+- statistical-methods.instructions.md (0.82, enables, forward) - "Statistical assumptions validation"
+- privacy-compliance.instructions.md (0.90, ensures, forward) - "PII handling and privacy protection"

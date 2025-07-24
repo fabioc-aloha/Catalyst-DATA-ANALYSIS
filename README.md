@@ -1,12 +1,12 @@
 # Enterprise Data Analysis Cognitive Architecture
 
 > **⚠️ IMPORTANT: Python 3.11+ Required**
-> 
+>
 > This project requires **Python 3.11 or higher** for compatibility with all data analysis packages and enterprise features. Python 3.10 and below are not supported due to dependency requirements.
 
 [![Data Analysis](https://img.shields.io/badge/Data_Analysis-Enterprise_Enhanced-green?style=for-the-badge&logo=chartline&logoColor=white)](#) [![Meta Cognitive](https://img.shields.io/badge/Meta-Cognitive-red?style=for-the-badge&logo=psychology)](#) [![Dual Context](https://img.shields.io/badge/Dual_Context-Framework_Integrated-orange?style=for-the-badge&logo=microsoft&logoColor=white)](#) [![Enterprise Framework](https://img.shields.io/badge/9_Point-Framework-gold?style=for-the-badge&logo=shield)](#) [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python&logoColor=white)](#)
 
-![Data Analysis Cognitive Architecture](MINION-DATA-ANALYSIS.png)
+![Data Analysis Cognitive Architecture](ALEX-DATA-ANALYSIS.png)
 
 ## 🎯 Project Overview
 
@@ -40,7 +40,7 @@ This project implements the **Project Catalyst Enterprise Data Analysis Cognitiv
 - **Storage**: 2GB free space for packages and data
 
 ### Quick Start
-1. **Activate the Virtual Environment**: 
+1. **Activate the Virtual Environment**:
    ```bash
    .venv\Scripts\Activate.ps1
    ```
@@ -50,7 +50,7 @@ This project implements the **Project Catalyst Enterprise Data Analysis Cognitiv
    jupyter lab
    ```
 
-3. **Activate the Cognitive Architecture**: 
+3. **Activate the Cognitive Architecture**:
    ```
    "show memory status"
    ```
@@ -96,10 +96,10 @@ This project **requires Python 3.11 or higher**. The requirements have been spec
    ```bash
    # Core essentials (fast, stable)
    pip install -r requirements.txt
-   
+
    # Advanced analytics (optional)
    pip install -r requirements-analysis.txt
-   
+
    # Development tools (optional)
    pip install -r requirements-dev.txt
    ```

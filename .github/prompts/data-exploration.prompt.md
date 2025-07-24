@@ -45,3 +45,13 @@ estimated_time: "30-60 minutes"
 5. Document findings and next steps
 
 Use sophisticated analytics tools from ${workspaceFolder}/.venv
+
+## Synapses (Embedded Connections)
+- data-analysis.instructions.md (0.95, triggers, forward) - "Exploratory analysis initiation"
+- statistical-methods.instructions.md (0.90, enhances, bidirectional) - "Statistical method selection and validation"
+- data-visualization.instructions.md (0.92, enables, forward) - "Visualization strategy and implementation"
+- data-cleaning.prompt.md (0.88, precedes, forward) - "Data quality issues identified"
+- feature-engineering.prompt.md (0.85, leads_to, forward) - "Feature discovery and transformation insights"
+- business-insights.prompt.md (0.87, informs, forward) - "Business context and stakeholder communication"
+- quality-assurance.instructions.md (0.89, validates, bidirectional) - "Data quality assessment and validation"
+- spss-analysis.prompt.md (0.89, coordinates, bidirectional) - "SPSS exploratory analysis integration"

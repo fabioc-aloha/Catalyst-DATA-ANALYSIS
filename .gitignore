@@ -76,3 +76,6 @@ Thumbs.db
 *.tmp
 *.temp
 *.log
+
+# Cognitive Framework (Optional - Comment out if you want to track these)
+# validate-cognitive-setup.ps1

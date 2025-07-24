@@ -39,3 +39,13 @@ description: "ML/AI integration, model deployment, MLOps, and enterprise ML work
 - Apply active learning for efficient data annotation
 - Implement federated learning for distributed data
 - Use AutoML for rapid prototyping and baseline establishment
+
+## Synapses (Embedded Connections)
+- data-analysis.instructions.md (0.90, extends, bidirectional) - "Advanced analytics extending core data analysis"
+- statistical-methods.instructions.md (0.90, builds_on, bidirectional) - "Statistical foundation for ML methodology"
+- model-building.prompt.md (0.96, implements, bidirectional) - "ML model development and deployment"
+- feature-engineering.prompt.md (0.90, enhances, bidirectional) - "Advanced feature engineering for ML"
+- model-validation.prompt.md (0.90, validates, bidirectional) - "ML model evaluation and validation"
+- business-intelligence.instructions.md (0.87, serves, forward) - "ML insights for business intelligence"
+- data-governance.instructions.md (0.89, complies, forward) - "ML governance and ethical AI standards"
+- performance-optimization.instructions.md (0.88, optimizes, bidirectional) - "ML performance and scalability optimization"

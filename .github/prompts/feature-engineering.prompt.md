@@ -36,3 +36,12 @@ description: "Advanced feature engineering and data transformation workflows"
 - Create feature documentation and metadata management systems
 
 Execute for sophisticated feature engineering supporting high-performance predictive models.
+
+## Synapses (Embedded Connections)
+- data-cleaning.prompt.md (0.85, builds_on, forward) - "Clean data ready for feature transformation"
+- data-exploration.prompt.md (0.87, informed_by, forward) - "Exploratory insights guide feature creation"
+- statistical-methods.instructions.md (0.88, applies, bidirectional) - "Statistical techniques for feature transformation"
+- model-building.prompt.md (0.92, prepares, forward) - "Engineered features for model development"
+- machine-learning.instructions.md (0.90, enhances, bidirectional) - "ML expertise for advanced feature engineering"
+- data-governance.instructions.md (0.84, complies, forward) - "Feature engineering governance and standards"
+- performance-optimization.instructions.md (0.86, optimizes, bidirectional) - "Feature performance and computational efficiency"

@@ -53,3 +53,12 @@ description: "Notebook dependency resolution and enterprise optimization"
 - Optimization patterns documented for replication
 
 Execute when notebook import issues require enterprise-compatible resolution.
+
+## Synapses (Embedded Connections)
+- performance-optimization.instructions.md (0.94, implements, bidirectional) - "Performance optimization expertise and best practices"
+- data-analysis.instructions.md (0.90, optimizes, bidirectional) - "Data analysis workflow optimization"
+- requirements-optimization.prompt.md (0.92, coordinates, bidirectional) - "Dependency management and environment optimization"
+- machine-learning.instructions.md (0.87, enhances, bidirectional) - "ML workflow optimization and efficiency"
+- quality-assurance.instructions.md (0.89, validates, bidirectional) - "Quality standards for notebook optimization"
+- enterprise-analytics.instructions.md (0.88, complies, forward) - "Enterprise standards and compatibility requirements"
+- data-engineering.instructions.md (0.85, supports, bidirectional) - "Data pipeline and processing optimization"

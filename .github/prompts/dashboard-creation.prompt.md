@@ -36,3 +36,12 @@ description: "Interactive dashboard design and development workflows"
 - Establish maintenance and update procedures
 
 Execute for enterprise-grade interactive dashboard development with full user experience optimization.
+
+## Synapses (Embedded Connections)
+- data-visualization.instructions.md (0.96, implements, bidirectional) - "Visualization expertise and best practices"
+- business-insights.prompt.md (0.88, presents, forward) - "Business insights through interactive visualization"
+- business-intelligence.instructions.md (0.92, enables, bidirectional) - "BI frameworks and stakeholder communication"
+- enterprise-reporting.prompt.md (0.89, supports, forward) - "Dashboard components for executive reporting"
+- data-governance.instructions.md (0.85, complies, forward) - "Dashboard governance and access controls"
+- performance-optimization.instructions.md (0.87, optimizes, bidirectional) - "Dashboard performance and scalability"
+- data-security.instructions.md (0.90, secures, forward) - "Security frameworks and access management"

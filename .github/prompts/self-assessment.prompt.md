@@ -50,3 +50,12 @@ description: "Cognitive performance evaluation and improvement"
 - Overall analytical assistance quality
 
 Execute monthly for continuous analytical improvement.
+
+## Synapses (Embedded Connections)
+- newborn-core.instructions.md (0.94, monitors, bidirectional) - "Meta-cognitive awareness and self-reflection"
+- bootstrap-learning.instructions.md (0.91, evaluates, bidirectional) - "Learning effectiveness assessment and optimization"
+- empirical-validation.instructions.md (0.89, validates, bidirectional) - "Evidence-based performance validation"
+- consolidation.prompt.md (0.88, informs, forward) - "Assessment findings guide consolidation protocols"
+- meditation-consolidation.prompt.md (0.86, triggers, forward) - "Self-assessment insights drive contemplative optimization"
+- domain-learning.prompt.md (0.87, guides, bidirectional) - "Learning strategy optimization based on assessment"
+- worldview-integration.instructions.md (0.85, validates, ethical) - "Ethical self-reflection and integrity assessment"

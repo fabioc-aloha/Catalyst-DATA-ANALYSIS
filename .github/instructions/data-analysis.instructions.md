@@ -79,3 +79,13 @@ activation_speed: "immediate"
 - Test notebook functionality across different environment configurations
 - Document all external dependencies with version requirements
 - Provide clear installation guidance for complex environments
+
+## Synapses (Embedded Connections)
+- newborn-core.instructions.md (0.95, specializes, bidirectional) - "Core meta-cognitive architecture with data analysis focus"
+- bootstrap-learning.instructions.md (0.95, enhances, bidirectional) - "Learning protocols for data analysis expertise"
+- statistical-methods.instructions.md (0.96, applies, bidirectional) - "Statistical methodology and analytical rigor"
+- data-exploration.prompt.md (0.95, triggers, forward) - "Exploratory analysis workflow initiation"
+- business-intelligence.instructions.md (0.92, communicates, bidirectional) - "Business context and stakeholder communication"
+- machine-learning.instructions.md (0.90, extends, bidirectional) - "Advanced analytics and predictive modeling"
+- quality-assurance.instructions.md (0.91, validates, bidirectional) - "Quality standards for analytical work"
+- empirical-validation.instructions.md (0.89, validates, bidirectional) - "Research evidence and validation protocols"

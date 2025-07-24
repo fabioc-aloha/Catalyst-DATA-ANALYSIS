@@ -36,3 +36,12 @@ description: "Model validation, testing, and performance assessment workflows"
 - Document model limitations and appropriate use cases
 
 Execute for rigorous model validation ensuring production readiness and business value.
+
+## Synapses (Embedded Connections)
+- model-building.prompt.md (0.95, validates, forward) - "Model evaluation and assessment protocols"
+- statistical-methods.instructions.md (0.92, applies, bidirectional) - "Statistical validation techniques and hypothesis testing"
+- business-insights.prompt.md (0.89, informs, forward) - "Model validation supports business decision-making"
+- empirical-validation.instructions.md (0.94, implements, bidirectional) - "Research-based validation protocols"
+- machine-learning.instructions.md (0.90, enhances, bidirectional) - "ML validation expertise and best practices"
+- quality-assurance.instructions.md (0.93, ensures, bidirectional) - "Quality standards for model assessment"
+- data-governance.instructions.md (0.87, complies, forward) - "Model governance and ethical AI validation"

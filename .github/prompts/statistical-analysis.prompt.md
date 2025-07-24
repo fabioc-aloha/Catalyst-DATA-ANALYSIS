@@ -46,3 +46,12 @@ requires_validation: true
 5. Generate comprehensive analytical report
 
 Use advanced statistical libraries from ${workspaceFolder}/.venv
+
+## Synapses (Embedded Connections)
+- statistical-methods.instructions.md (0.96, implements, bidirectional) - "Statistical methodology expertise application"
+- data-exploration.prompt.md (0.90, builds_on, forward) - "Exploratory findings inform statistical approach"
+- empirical-validation.instructions.md (0.94, validates, bidirectional) - "Research evidence and validation protocols"
+- business-insights.prompt.md (0.89, informs, forward) - "Statistical findings for business decision-making"
+- model-validation.prompt.md (0.87, prepares, forward) - "Statistical foundation for model assessment"
+- enterprise-reporting.prompt.md (0.86, supports, forward) - "Statistical evidence for executive reporting"
+- spss-analysis.prompt.md (0.92, coordinates, bidirectional) - "SPSS integration and scholar-practitioner frameworks"
