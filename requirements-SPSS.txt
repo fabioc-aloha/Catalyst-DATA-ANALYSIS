@@ -1,0 +1,88 @@
+# SPSS Integration and Advanced Statistical Analysis Requirements
+# For comprehensive SPSS-to-Python transition and SEM capabilities
+# Generated: July 24, 2025
+
+# Core SPSS Integration
+pyreadstat>=1.2.0           # SPSS file reading with metadata preservation
+savReaderWriter>=3.4.0      # Alternative SPSS file handler
+pandas>=2.0.0               # Enhanced DataFrame operations for SPSS data
+
+# Statistical Analysis Core
+numpy>=1.24.0               # Numerical computing foundation
+scipy>=1.10.0               # Statistical functions and tests
+statsmodels>=0.14.0         # Comprehensive statistical modeling
+pingouin>=0.5.3             # User-friendly statistical functions
+
+# Psychometric and Factor Analysis
+factor-analyzer>=0.4.1      # Exploratory and confirmatory factor analysis
+scikit-learn>=1.3.0         # Machine learning and preprocessing
+reliability>=0.9.0          # Cronbach's alpha and reliability analysis
+
+# Structural Equation Modeling (SEM)
+semopy>=2.3.0               # Advanced SEM beyond SPSS capabilities
+
+# Advanced Statistical Methods
+pymc>=5.0.0                 # Bayesian statistical modeling
+arviz>=0.15.0               # Bayesian analysis visualization
+
+# Data Visualization
+matplotlib>=3.7.0           # Core plotting functionality
+seaborn>=0.12.0             # Statistical data visualization
+plotly>=5.15.0              # Interactive visualizations
+graphviz>=0.20.0            # SEM path diagram creation
+
+# Business Intelligence and Reporting
+openpyxl>=3.1.0             # Excel file operations
+xlsxwriter>=3.1.0           # Enhanced Excel writing capabilities
+jinja2>=3.1.0               # Template-based report generation
+
+# Survey and Customer Satisfaction Analysis
+weightedcalcs>=0.1.3        # Weighted statistical calculations
+
+# Machine Learning Extensions
+xgboost>=1.7.0              # Advanced gradient boosting
+lightgbm>=3.3.0             # Efficient gradient boosting
+catboost>=1.2.0             # Categorical feature handling
+
+# Text Analysis (for open-ended survey responses)
+nltk>=3.8.0                 # Natural language processing
+textblob>=0.17.0            # Sentiment analysis
+wordcloud>=1.9.0            # Text visualization
+
+# Database Connectivity (for enterprise SPSS workflows)
+sqlalchemy>=2.0.0           # Database abstraction layer
+psycopg2-binary>=2.9.0      # PostgreSQL connectivity
+pymssql>=2.2.0              # SQL Server connectivity
+
+# Performance and Optimization
+numba>=0.57.0               # JIT compilation for numerical code
+joblib>=1.3.0               # Parallel processing utilities
+dask>=2023.7.0              # Parallel computing for large datasets
+
+# Enterprise and Production
+python-dotenv>=1.0.0        # Environment variable management
+pydantic>=2.0.0             # Data validation and settings
+rich>=13.0.0                # Enhanced console output
+tqdm>=4.65.0                # Progress bars for long-running analyses
+
+# Jupyter Notebook Enhancements
+ipywidgets>=8.0.0           # Interactive widgets for notebooks
+ipython>=8.14.0             # Enhanced interactive Python
+jupyter>=1.0.0              # Jupyter ecosystem
+
+# Quality Assurance and Testing
+pytest>=7.4.0              # Testing framework
+pytest-cov>=4.1.0          # Coverage reporting
+black>=23.7.0               # Code formatting
+flake8>=6.0.0               # Code linting
+
+# Documentation and Reporting
+sphinx>=7.1.0              # Documentation generation
+nbconvert>=7.7.0           # Notebook conversion utilities
+papermill>=2.4.0           # Notebook parameterization and execution
+
+# Optional Advanced Features (install as needed)
+# tensorflow>=2.13.0        # Deep learning for advanced modeling
+# torch>=2.0.0              # Alternative deep learning framework
+# shap>=0.42.0              # Model explainability
+# lime>=0.2.0               # Local interpretable model explanations
