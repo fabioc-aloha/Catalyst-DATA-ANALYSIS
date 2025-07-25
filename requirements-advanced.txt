@@ -1,0 +1,45 @@
+# Advanced Statistical Computing and Bayesian Analysis Requirements
+# For specialized statistical modeling and reliability analysis
+# Generated: July 24, 2025
+# Install AFTER core requirements but can be installed independently
+# Handles packages with complex dependency chains
+
+# Bayesian Analysis and Statistical Computing
+pymc>=5.0.0                 # Bayesian modeling and probabilistic programming
+arviz>=0.15.0               # Bayesian analysis and visualization
+pytensor>=2.31.0            # Backend for PyMC (handles numba compatibility)
+
+# Structural Equation Modeling
+semopy>=2.3.0               # SEM modeling and analysis (with sklearn compatibility)
+
+# Statistical Reliability Analysis
+reliability>=0.9.0          # Reliability analysis, Weibull distributions, survival analysis
+autograd>=1.7.0             # Automatic differentiation (reliability dependency)
+
+# High-Performance Computing for Advanced Analytics
+numba>=0.61.0               # JIT compilation for numerical functions
+llvmlite>=0.44.0            # LLVM bindings for numba
+
+# Advanced Statistical Methods
+scikit-survival>=0.22.0     # Survival analysis
+# lifelines>=0.27.0         # DISABLED: Python 3.11 compatibility issues
+# scipy-optimize>=1.0.0     # REMOVED: Part of scipy core (already in requirements.txt)
+
+# Note: For survival analysis, use scikit-survival or scipy.stats
+# Note: lifelines can be installed manually if Python 3.11 support is added
+
+# Note: This file contains packages with complex dependency chains
+# Note: Install order matters - some packages may require specific numpy versions
+# Note: If conflicts arise, install packages individually in order listed
+# Note: Compatible with numpy>=1.24.0,<2.3.0 range for maximum compatibility
+
+# Installation sequence for complex dependencies:
+# 1. pip install -r requirements.txt (core foundation)
+# 2. pip install -r requirements-analysis.txt (standard analytics)  
+# 3. pip install -r requirements-SPSS.txt (SPSS integration)
+# 4. pip install -r requirements-advanced.txt (this file - complex dependencies)
+# 5. pip install -r requirements-dev.txt (development tools)
+
+# Alternative installation (if conflicts occur):
+# pip install pymc arviz semopy reliability --no-deps
+# Then manually install missing dependencies as needed

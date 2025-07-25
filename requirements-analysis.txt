@@ -2,78 +2,80 @@
 # Install after main requirements: pip install -r requirements-analysis.txt
 # Requires: pip install -r requirements.txt (install core first)
 
-# SPSS Data Processing
-pyreadstat>=1.3.0
-
-# Advanced Statistical Analysis
-pingouin>=0.5.4
-factor-analyzer>=0.5.1
-prince>=0.13.0
+# Statistical Analysis Extensions
+pingouin>=0.5.0
+factor-analyzer>=0.5.0
 
 # Machine Learning Extensions
-xgboost>=2.1.0
-lightgbm>=4.5.0
-imbalanced-learn>=0.12.0
+xgboost>=1.7.0
+lightgbm>=4.0.0
+imbalanced-learn>=0.11.0
 
-# Time Series Analysis
-arch>=7.0.0
-pmdarima>=2.0.4
-
-# Advanced Visualization
-plotly>=5.23.0
-bokeh>=3.5.0
-altair>=5.4.0
+# Interactive Visualization
+plotly>=5.15.0
+bokeh>=3.0.0
+altair>=5.0.0
 
 # Business Intelligence & Dashboards
-kaleido>=0.2.1  # For plotly static image export
-dash>=2.17.0  # Interactive web applications
-dash-bootstrap-components>=1.5.0  # Bootstrap components for Dash
+dash>=2.15.0
+dash-bootstrap-components>=1.4.0
+kaleido>=0.2.0
 
 # Text Analytics & NLP
-nltk>=3.9
-textblob>=0.18.0
-wordcloud>=1.9.3
+nltk>=3.8.0
+textblob>=0.17.0
+wordcloud>=1.9.0
 
 # Geospatial Analysis
-geopandas>=1.0.0
-folium>=0.17.0
-
-# Image Processing
-pillow>=10.4.0
-opencv-python>=4.10.0
-scikit-image>=0.24.0
+geopandas>=0.13.0
+folium>=0.14.0
 
 # Network Analysis
-networkx>=3.3
+networkx>=3.0.0
 
-# Extended Data Processing
-xlsxwriter>=3.2.0
-tqdm>=4.66.0
-beautifulsoup4>=4.12.0
-lxml>=5.3.0
+# Time Series Analysis
+arch>=6.0.0
+# pmdarima>=2.0.0  # Disabled due to numpy compatibility
+
+# Advanced Image Processing
+pillow>=9.0.0
+opencv-python>=4.8.0
+scikit-image>=0.20.0
+
+# Data Processing Extensions
+xlsxwriter>=3.1.0
+beautifulsoup4>=4.11.0
+lxml>=4.9.0
+tqdm>=4.60.0
+
+# Structural Equation Modeling (Basic)
+prince>=0.13.0  # Principal component analysis and correspondence analysis
+
+# Note: Advanced Bayesian analysis (pymc, arviz) moved to requirements-advanced.txt
+# Note: Complex SEM modeling (semopy) moved to requirements-advanced.txt
 
 # Database Connectivity
 sqlalchemy>=2.0.0
-pymongo>=4.8.0
-redis>=5.0.0
+pymongo>=4.0.0
 
 # Cloud & Big Data
-boto3>=1.35.0
-azure-storage-blob>=12.22.0
+boto3>=1.30.0
+azure-storage-blob>=12.0.0
 
 # Performance Optimization
-numba>=0.60.0
-joblib>=1.4.0
+# numba>=0.58.0              # MOVED to requirements-advanced.txt (higher version required)
+joblib>=1.3.0
 
 # Security
-cryptography>=43.0.0
+cryptography>=40.0.0
 
 # Utilities
-click>=8.1.0
+click>=8.0.0
 pyyaml>=6.0.0
-toml>=0.10.0
-python-dotenv>=1.0.0  # Environment variable management for enterprise configs
+python-dateutil>=2.8.0
+tabulate>=0.9.0
+jinja2>=3.1.0
 
-# Enterprise Features
-python-dateutil>=2.9.0  # Enhanced date/time handling for business analytics
-tabulate>=0.9.0  # Professional table formatting for reports
+# Note: Testing and development tools are in requirements-dev.txt
+# Note: Documentation tools are in requirements-dev.txt
+# Note: SPSS integration is in requirements-SPSS.txt

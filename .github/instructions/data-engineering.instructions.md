@@ -39,3 +39,12 @@ description: "Data pipeline development, ETL processes, and data architecture"
 - Establish data freshness and completeness monitoring
 - Design data backup and disaster recovery procedures
 - Implement data lineage and impact analysis tools
+
+## Enterprise Dependency Management Architecture
+- **5-File Requirements Structure**: Core → Analysis → SPSS → Advanced → Development
+- **Load Balancing Strategy**: Isolate complex dependencies (PyMC, reliability, SEM) in dedicated files
+- **Sequential Installation Protocol**: Prevent conflicts through proper package ordering
+- **Version Coordination**: Strategic upgrades (numpy 1.26.4 → 2.2.6) for compatibility
+- **Validation Automation**: Zero-duplicate enforcement with efficiency monitoring
+- **Complex Package Integration**: Support for Bayesian analysis, reliability testing, SEM modeling
+- **Performance Optimization**: 100% efficiency through proper dependency isolation

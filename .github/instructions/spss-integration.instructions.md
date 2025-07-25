@@ -194,3 +194,16 @@ from factor_analyzer import FactorAnalyzer, calculate_kmo, calculate_bartlett_sp
 ---
 
 *SPSS-Python Integration Instructions - Enabling seamless transition to enhanced analytical capabilities while maintaining familiar workflows and business context.*
+
+## Synapses (Embedded Connections)
+- newborn-core.instructions.md (0.96, integrates, bidirectional) - "Core architecture manages analytical synapse activation"
+- bootstrap-learning.instructions.md (0.89, optimizes, bidirectional) - "Analytical learning patterns consolidated through experience"
+- data-analysis.instructions.md (0.95, specializes, bidirectional) - "Data analysis procedural memory integration"
+- statistical-methods.instructions.md (0.94, enhances, methodological) - "Statistical methodology connections and validation"
+- business-intelligence.instructions.md (0.92, applies, business) - "Business intelligence and stakeholder communication"
+- microsoft-gcx-transformation.prompt.md (0.95, specializes, bidirectional) - "Microsoft GCX customer experience analytics framework"
+- executive-business-intelligence.prompt.md (0.93, applies, business) - "Executive reporting and strategic communication excellence"
+- satisfaction-analysis-complete.prompt.md (0.92, triggers, forward) - "Complete customer satisfaction survey analysis workflows"
+- interactive-analysis.instructions.md (0.88, enables, bidirectional) - "Interactive analysis request handling and user communication"
+- worldview-integration.instructions.md (0.85, validates, ethical) - "Ethical analytical connections require validation"
+- empirical-validation.instructions.md (0.89, strengthens, bidirectional) - "Research evidence strengthens analytical connections"
