@@ -2,7 +2,7 @@
 # MICROSOFT GCX EXECUTIVE INTELLIGENCE REPORT
 ## Customer Experience Analytics for Retail Excellence
 
-**Report Date:** July 24, 2025  
+**Report Date:** July 25, 2025  
 **Analysis Framework:** Microsoft Global Customer Experience (GCX) Analytics  
 **Dataset:** Multi-Store Customer Experience Performance Study  
 **Analytics Engine:** Microsoft GCX Data Science Platform powered by NEWBORN v0.7.0  
