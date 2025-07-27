@@ -1,0 +1,218 @@
+
+ASSIGNMENT: DBA 710 One-Way ANOVA Analysis
+STUDENT: [Your Name]
+DATE: July 27, 2025
+DUE: Sunday 11:59 PM (PST)
+
+=================================================================
+SPSS ANALYSIS RESULTS: One-Way ANOVA with LSD Post-Hoc Testing
+=================================================================
+
+DATA INFORMATION:
+Dataset: DBA 710 Multiple Stores.sav
+Sample Size: 869 stores
+Independent Variable: STATE (Factor)
+Dependent Variable: CUSTSCORE (Customer Satisfaction Score)
+
+DESCRIPTIVE STATISTICS:
+==================================================
+
+STATE Arizona:
+    N = 176
+    Mean = 26.0000
+    Std. Deviation = 4.2895
+    Std. Error = 0.3233
+    Minimum = 17.0000
+    Maximum = 36.0000
+STATE California:
+    N = 194
+    Mean = 25.6237
+    Std. Deviation = 3.6686
+    Std. Error = 0.2634
+    Minimum = 16.0000
+    Maximum = 33.0000
+STATE Indiana:
+    N = 124
+    Mean = 23.2823
+    Std. Deviation = 3.9356
+    Std. Error = 0.3534
+    Minimum = 14.0000
+    Maximum = 35.0000
+STATE Missouri:
+    N = 128
+    Mean = 25.0547
+    Std. Deviation = 4.2617
+    Std. Error = 0.3767
+    Minimum = 16.0000
+    Maximum = 35.0000
+STATE Texas:
+    N = 129
+    Mean = 24.6047
+    Std. Deviation = 2.7738
+    Std. Error = 0.2442
+    Minimum = 14.0000
+    Maximum = 30.0000
+STATE Washington:
+    N = 118
+    Mean = 24.9407
+    Std. Deviation = 3.9728
+    Std. Error = 0.3657
+    Minimum = 16.0000
+    Maximum = 36.0000
+
+LEVENE'S TEST FOR EQUALITY OF VARIANCES:
+==================================================
+Levene Statistic = 5.3473
+df1 = 5
+df2 = 863
+Sig. = 0.0001
+
+Interpretation: Equal variances not assumed
+
+ANOVA TABLE:
+==================================================
+Source               Sum of Squares  df    Mean Square     F          Sig.      
+---------------------------------------------------------------------------
+Between Groups       637.056         5     127.411         8.550      0.000     
+Within Groups        12860.691       863   14.902         
+Total                13497.747       868  
+
+EFFECT SIZE:
+Eta Squared (η²) = 0.0472
+Interpretation: Medium effect
+
+
+POST HOC TESTS - LSD (Least Significant Difference):
+============================================================
+
+Multiple Comparisons
+Dependent Variable: CUSTSCORE
+............................................................
+
+
+Arizona vs California:
+    Mean Difference = 0.3763
+    Std. Error = 0.4019
+    Sig. = 0.3493
+    95% Confidence Interval: [-0.4124, 1.1650]
+Arizona vs Indiana:
+    Mean Difference = 2.7177*
+    Std. Error = 0.4526
+    Sig. = 0.0000
+    95% Confidence Interval: [1.8294, 3.6061]
+Arizona vs Missouri:
+    Mean Difference = 0.9453*
+    Std. Error = 0.4484
+    Sig. = 0.0353
+    95% Confidence Interval: [0.0652, 1.8255]
+Arizona vs Texas:
+    Mean Difference = 1.3953*
+    Std. Error = 0.4474
+    Sig. = 0.0019
+    95% Confidence Interval: [0.5172, 2.2735]
+Arizona vs Washington:
+    Mean Difference = 1.0593*
+    Std. Error = 0.4593
+    Sig. = 0.0213
+    95% Confidence Interval: [0.1578, 1.9608]
+California vs Indiana:
+    Mean Difference = 2.3415*
+    Std. Error = 0.4438
+    Sig. = 0.0000
+    95% Confidence Interval: [1.4703, 3.2126]
+California vs Missouri:
+    Mean Difference = 0.5690
+    Std. Error = 0.4396
+    Sig. = 0.1959
+    95% Confidence Interval: [-0.2938, 1.4318]
+California vs Texas:
+    Mean Difference = 1.0191*
+    Std. Error = 0.4386
+    Sig. = 0.0204
+    95% Confidence Interval: [0.1583, 1.8798]
+California vs Washington:
+    Mean Difference = 0.6830
+    Std. Error = 0.4507
+    Sig. = 0.1300
+    95% Confidence Interval: [-0.2015, 1.5676]
+Indiana vs Missouri:
+    Mean Difference = -1.7724*
+    Std. Error = 0.4864
+    Sig. = 0.0003
+    95% Confidence Interval: [-2.7271, -0.8177]
+Indiana vs Texas:
+    Mean Difference = -1.3224*
+    Std. Error = 0.4855
+    Sig. = 0.0066
+    95% Confidence Interval: [-2.2753, -0.3695]
+Indiana vs Washington:
+    Mean Difference = -1.6584*
+    Std. Error = 0.4965
+    Sig. = 0.0009
+    95% Confidence Interval: [-2.6328, -0.6840]
+Missouri vs Texas:
+    Mean Difference = 0.4500
+    Std. Error = 0.4816
+    Sig. = 0.3503
+    95% Confidence Interval: [-0.4952, 1.3953]
+Missouri vs Washington:
+    Mean Difference = 0.1140
+    Std. Error = 0.4927
+    Sig. = 0.8170
+    95% Confidence Interval: [-0.8529, 1.0810]
+Texas vs Washington:
+    Mean Difference = -0.3360
+    Std. Error = 0.4917
+    Sig. = 0.4946
+    95% Confidence Interval: [-1.3012, 0.6291]
+
+STATISTICAL INTERPRETATION:
+==================================================
+
+✅ SIGNIFICANT RESULT (p = 0.0000 < 0.05)
+
+The one-way ANOVA revealed a statistically significant difference in customer 
+satisfaction scores between states, F(5, 863) = 8.550, 
+p = 0.0000, η² = 0.0472.
+
+Post-hoc analysis using Fisher's LSD test revealed:
+• State Arizona had significantly higher satisfaction than State Indiana 
+  (Mean difference = 2.718, p = 0.000)
+• State Arizona had significantly higher satisfaction than State Missouri 
+  (Mean difference = 0.945, p = 0.035)
+• State Arizona had significantly higher satisfaction than State Texas 
+  (Mean difference = 1.395, p = 0.002)
+• State Arizona had significantly higher satisfaction than State Washington 
+  (Mean difference = 1.059, p = 0.021)
+• State California had significantly higher satisfaction than State Indiana 
+  (Mean difference = 2.341, p = 0.000)
+• State California had significantly higher satisfaction than State Texas 
+  (Mean difference = 1.019, p = 0.020)
+• State Indiana had significantly lower satisfaction than State Missouri 
+  (Mean difference = 1.772, p = 0.000)
+• State Indiana had significantly lower satisfaction than State Texas 
+  (Mean difference = 1.322, p = 0.007)
+• State Indiana had significantly lower satisfaction than State Washington 
+  (Mean difference = 1.658, p = 0.001)
+
+BUSINESS CONCLUSIONS:
+==================================================
+
+Geographic location significantly influences customer satisfaction in this retail chain.
+State Arizona demonstrates the highest satisfaction (M = 26.000), 
+while State Indiana shows the lowest (M = 23.282).
+
+Management should investigate operational differences between high and low-performing 
+states to identify best practices and improvement opportunities.
+
+
+METHODOLOGY NOTES:
+==================================================
+• Analysis conducted using Python/SciPy statistical libraries
+• SPSS-equivalent procedures implemented for academic compatibility
+• All assumptions tested prior to main analysis
+• Results formatted for professional presentation
+• Complete reproducible analysis available in Jupyter notebook
+
+END OF SPSS ANALYSIS REPORT
+======================================================================
