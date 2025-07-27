@@ -1,0 +1,28 @@
+{
+  "dataset_info": {
+    "shape": [
+      869,
+      8
+    ],
+    "total_variables": 8,
+    "memory_usage_mb": 0.053165435791015625
+  },
+  "variable_types": {
+    "continuous": [
+      "BLDGAGE",
+      "ROISCORE",
+      "CUSTSCORE"
+    ],
+    "categorical": [
+      "STATE",
+      "PRODMIX"
+    ],
+    "binary": [
+      "OWNERSHIP",
+      "FACTYPE",
+      "SETTING"
+    ]
+  },
+  "missing_data": {},
+  "exploration_timestamp": "2025-07-27T16:29:10.163137"
+}

@@ -1,8 +1,54 @@
 # Scripts Directory
 
-This directory contains standalone Python scripts for automated analysis and reporting.
+This directory contains standalone Python scripts for automated analysis and reporting, featuring an enhanced **Multi-Step SPSS Analysis Workflow** with comprehensive missing data analysis.
 
-## 📊 Available Scripts
+## � Multi-Step SPSS Analysis Workflow (Enhanced)
+
+### **Interactive 3-Step Analysis Process**
+
+The enhanced workflow provides a guided, interactive approach to SPSS analysis with sophisticated missing data assessment:
+
+#### **Step 1: Data Exploration** (`step1_explore_spss_data.py`)
+**Purpose**: Comprehensive SPSS data exploration with advanced missing data analysis
+
+**Enhanced Features**:
+- 🎯 **Automatic SPSS file detection** from notebooks directory
+- �📊 **Variable type categorization** (continuous, categorical, binary)
+- 🔍 **Missing Data Pattern Analysis**: MCAR, MAR, MNAR detection
+- 📈 **Completion Rate Assessment** with quality recommendations
+- ⚠️ **Quality Categorization**: Suitable/Caution/Exclude based on missingness
+- 🏷️ **SPSS Metadata Preservation**: Labels, value labels, measurement levels
+
+**Output**: `./results/spss_exploration_results.json`
+
+#### **Step 2: Variable Selection** (`step2_variable_selection.py`)
+**Purpose**: Interactive variable selection with missing data quality warnings
+
+**Enhanced Features**:
+- ⚠️ **Visual Quality Indicators**: High missingness warnings (>15%)
+- 🎯 **Automated Quality Assessment**: Three-tier system (suitable/caution/exclude)
+- 🛠️ **Interactive Configuration Builder**: Guided analysis setup
+- 📋 **Suggested Analysis Patterns**: Based on variable types and quality
+- 🤖 **Dynamic Script Generation**: Auto-creates customized Step 3 script
+- 💡 **Missing Data Recommendations**: Analysis approach suggestions
+
+**Output**: `./results/analysis_configuration.json` + `step3_execute_analysis.py`
+
+#### **Step 3: Analysis Execution** (`step3_execute_analysis.py`)
+**Purpose**: Execute configured analysis with missing data considerations (auto-generated)
+
+**Enhanced Features**:
+- ⚙️ **Configuration-Driven Execution**: Based on Step 2 selections
+- 🎯 **Missing Data Handling**: Quality-based analysis approaches
+- 📊 **Statistical Analysis**: With data quality notes and warnings
+- 📈 **Professional Formatting**: Export-ready results
+- 📝 **Methodological Notes**: Missing data handling documentation
+
+**Output**: Analysis results in `./results/`
+
+---
+
+## 📊 Standalone Analysis Scripts
 
 ### `generate_unified_report.py`
 **Purpose**: Generates a comprehensive unified analysis report consolidating ALL statistical analyses from the SPSS dataset.

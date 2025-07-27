@@ -1,49 +1,156 @@
 # Interactive SPSS to Python Analysis Guide
 
-**Version**: 1.0
-**Date**: July 24, 2025
-**Framework**: Alex's Bootstrap Learning Framework - Customer Satisfaction Analysis Assistant
+**Version**: 2.0
+**Date**: July 27, 2025
+**Framework**: Alex's Bootstrap Learning Framework - Enhanced Multi-Step Analysis Workflow
+**Enhancement**: Comprehensive Missing Data Analysis & Organized File Structure
+
+## 🚀 New Multi-Step Analysis Workflow
+
+**UPDATED**: This guide now includes a streamlined 3-step interactive analysis workflow with comprehensive missing data assessment and organized file management.
+
+### 🎯 Quick Start - Multi-Step Workflow
+
+For immediate analysis, use the new step-by-step scripts located in `scripts/`:
+
+1. **Step 1**: Data Exploration - `python step1_explore_spss_data.py`
+2. **Step 2**: Variable Selection - `python step2_variable_selection.py`
+3. **Step 3**: Analysis Execution - `python step3_execute_analysis.py`
+
+All results are automatically saved in `scripts/results/` for easy organization.
 
 ## How to Use This Guide
 
-This manual helps you request specific SPSS-equivalent analyses from your AI assistant. Simply copy the suggested prompts and ask your assistant to create notebook cells or complete notebooks for your customer satisfaction survey analysis.
+This manual provides two approaches:
+1. **🔥 NEW: Interactive Multi-Step Scripts** - Automated workflow with missing data analysis
+2. **📚 Traditional: Manual Analysis Prompts** - Custom notebook creation
 
-**Your Data**: Throughout this guide, we'll assume your SPSS data file is called `DATA.sav`
+**Your Data**: Throughout this guide, we'll assume your SPSS data file is in the `notebooks/` directory.
 
 ---
 
 ## Table of Contents
 
-1. [Getting Started with Your Data](#getting-started-with-your-data)
-2. [Basic Descriptive Analysis](#basic-descriptive-analysis)
-3. [Scale Reliability Assessment](#scale-reliability-assessment)
-4. [Factor Analysis](#factor-analysis)
-5. [Customer Satisfaction Driver Analysis](#customer-satisfaction-driver-analysis)
-6. [Group Comparisons](#group-comparisons)
-7. [Advanced Predictive Modeling](#advanced-predictive-modeling)
-8. [Complete Survey Analysis Workflow](#complete-survey-analysis-workflow)
-9. [Interactive Dashboard Creation](#interactive-dashboard-creation)
+1. [🆕 Multi-Step Analysis Workflow](#multi-step-analysis-workflow)
+2. [🎯 Missing Data Assessment](#missing-data-assessment)
+3. [Getting Started with Your Data](#getting-started-with-your-data)
+4. [Basic Descriptive Analysis](#basic-descriptive-analysis)
+5. [Scale Reliability Assessment](#scale-reliability-assessment)
+6. [Factor Analysis](#factor-analysis)
+7. [Customer Satisfaction Driver Analysis](#customer-satisfaction-driver-analysis)
+8. [Group Comparisons](#group-comparisons)
+9. [Advanced Predictive Modeling](#advanced-predictive-modeling)
+10. [Complete Survey Analysis Workflow](#complete-survey-analysis-workflow)
+11. [Interactive Dashboard Creation](#interactive-dashboard-creation)
+12. [📁 File Organization](#file-organization)
+
+---
+
+## 🆕 Multi-Step Analysis Workflow
+
+### ✨ Enhanced Features:
+- **Comprehensive Missing Data Analysis**: Pattern detection, mechanism assessment (MCAR/MAR/MNAR)
+- **Variable Quality Assessment**: Automated categorization with missing data warnings
+- **Interactive Configuration**: Step-by-step guided analysis setup
+- **Organized Output**: All results saved in `scripts/results/` folder
+
+### 🔧 Step 1: Data Exploration
+**Script**: `step1_explore_spss_data.py`
+**Purpose**: Comprehensive SPSS data exploration with missing data analysis
+
+**Features**:
+- Automatic SPSS file detection
+- Variable type categorization (continuous, categorical, binary)
+- **Enhanced Missing Data Analysis**:
+  - Missing data patterns and mechanisms (MCAR/MAR/MNAR)
+  - Completion rates by variable
+  - Quality recommendations based on missingness
+- Descriptive statistics with SPSS metadata preservation
+
+**Output**: `scripts/results/spss_exploration_results.json`
+
+### 🔧 Step 2: Variable Selection & Design
+**Script**: `step2_variable_selection.py`
+**Purpose**: Interactive variable selection with missing data quality warnings
+
+**Features**:
+- **Missing Data Quality Warnings**:
+  - ⚠️ Visual indicators for high missingness (>15%)
+  - Automated quality categorization (suitable/caution/exclude)
+  - Data quality considerations in analysis planning
+- Suggested analysis configurations
+- Interactive configuration building
+- Automated Step 3 script generation
+
+**Output**: `scripts/results/analysis_configuration.json` + `step3_execute_analysis.py`
+
+### 🔧 Step 3: Analysis Execution
+**Script**: `step3_execute_analysis.py` (auto-generated)
+**Purpose**: Execute selected analysis with missing data considerations
+
+**Features**:
+- Configuration-based analysis execution
+- Missing data handling recommendations
+- Results with data quality notes
+- Export-ready outputs
+
+**Output**: Analysis results in `scripts/results/`
+
+---
+
+## 🎯 Missing Data Assessment
+
+### 📊 Comprehensive Missing Data Framework
+
+The new workflow includes sophisticated missing data analysis:
+
+#### **Missing Data Patterns**:
+- **Complete**: Variables with no missing data
+- **Monotone**: Predictable missing patterns
+- **Non-monotone**: Complex missing patterns requiring investigation
+
+#### **Missing Data Mechanisms**:
+- **MCAR** (Missing Completely at Random): Safe for standard analysis
+- **MAR** (Missing at Random): May require imputation
+- **MNAR** (Missing Not at Random): Requires careful handling
+
+#### **Quality Categorization**:
+- **✅ Suitable** (<15% missing): Standard analysis recommended
+- **⚠️ Caution** (15-29% missing): Consider imputation or sensitivity analysis
+- **❌ Exclude** (≥30% missing): High risk, investigate before use
+
+#### **Automated Recommendations**:
+- Missing data handling strategies
+- Variable inclusion warnings
+- Analysis approach suggestions based on data quality
 
 ---
 
 ## Getting Started with Your Data
 
-### What You'll Get:
+### Enhanced Data Import with Missing Data Analysis:
 - SPSS file imported with all metadata preserved
-- Data quality assessment report
+- **Missing data pattern analysis and mechanism assessment**
+- **Variable quality categorization with missingness warnings**
+- **Data quality recommendations and caution flags**
 - Variable summary with labels and measurement levels
-- Missing data analysis
 
-### Prompt to Copy:
+### Quick Start Prompt:
 ```
-"Please create a notebook cell to import my SPSS file called DATA.sav and provide a comprehensive data overview. I want to see the sample size, variable types, missing data patterns, and basic data quality checks. Show me how the data looks similar to what I would see in SPSS Variable View and Data View."
+"Run the multi-step SPSS analysis workflow starting with step1_explore_spss_data.py for comprehensive data exploration with missing data analysis."
+```
+
+### Traditional Manual Prompt:
+```
+"Please create a notebook cell to import my SPSS file and provide a comprehensive data overview including missing data analysis. I want to see the sample size, variable types, missing data patterns, mechanisms assessment, and data quality recommendations. Show me variables categorized by missing data quality (suitable/caution/exclude)."
 ```
 
 ### Expected Results:
-- **Sample Information**: Total cases, complete cases, response rate
-- **Variable Summary**: All variables with their labels, types (nominal/ordinal/scale), and missing percentages
-- **Data Preview**: First few rows showing actual survey responses
-- **Quality Flags**: Any data quality issues that need attention
+- **Sample Information**: Total cases, complete cases, missing data summary
+- **Missing Data Analysis**: Patterns, mechanisms, completion rates
+- **Variable Quality Assessment**: Quality categorization with warnings
+- **Data Quality Recommendations**: Handling strategies for missing data
+- **Variable Summary**: All variables with labels, types, and quality indicators
 
 ---
 
@@ -310,6 +417,89 @@ Format the results for business presentation with clear interpretations and acti
 
 ---
 
-**Remember**: Your AI assistant can create sophisticated analyses that go far beyond traditional SPSS capabilities. Don't hesitate to ask for advanced techniques, business interpretation, and practical recommendations alongside the statistical results.
+## 📁 File Organization
 
-**Next Steps**: Choose an analysis type above, copy the suggested prompt, modify it for your specific variable names and context, then ask your assistant to create the analysis!
+### 🎯 Organized Project Structure
+
+The enhanced workflow uses an organized file structure to keep analysis outputs properly managed:
+
+```
+DATA-ANALYSIS/
+├── scripts/                          # Analysis scripts
+│   ├── results/                      # 🔥 All analysis outputs
+│   │   ├── spss_exploration_results.json
+│   │   ├── analysis_configuration.json
+│   │   └── *.md                     # Generated reports
+│   ├── step1_explore_spss_data.py   # Data exploration
+│   ├── step2_variable_selection.py  # Variable selection
+│   ├── step3_execute_analysis.py    # Analysis execution
+│   └── generate_unified_report.py   # Comprehensive reporting
+├── notebooks/                        # Jupyter notebooks
+│   └── *.sav                        # SPSS data files
+├── data/                            # Project data
+└── docs/                            # Documentation
+```
+
+### 📋 Output File Management
+
+#### **Step 1 Outputs** (`scripts/results/`):
+- `spss_exploration_results.json` - Dataset overview and missing data analysis
+- Console output with comprehensive data quality assessment
+
+#### **Step 2 Outputs** (`scripts/results/`):
+- `analysis_configuration.json` - Analysis configurations with quality warnings
+- `step3_execute_analysis.py` - Auto-generated execution script
+- Interactive guidance with missing data recommendations
+
+#### **Step 3 Outputs** (`scripts/results/`):
+- Analysis results with data quality notes
+- Statistical outputs formatted for business interpretation
+- Export-ready visualizations and tables
+
+#### **Unified Reports** (`scripts/results/`):
+- Comprehensive analysis reports (`.md` format)
+- Executive summaries with business recommendations
+- Statistical appendices with methodological notes
+
+### ✅ Benefits of Organized Structure
+
+1. **No Confusion**: All outputs contained within scripts folder
+2. **Version Control**: Easy tracking of analysis iterations
+3. **Self-Contained**: Scripts and outputs stay together
+4. **Professional**: Clean, organized project structure
+5. **Collaborative**: Clear file locations for team sharing
+
+### 🔄 Migration Guide
+
+If upgrading from previous versions:
+1. **Automatic**: New scripts automatically use organized structure
+2. **Legacy Files**: Previous outputs in `data/output/` can be moved to `scripts/results/`
+3. **Notebooks**: Continue using existing notebook workflows
+4. **Integration**: Organized scripts work alongside traditional notebooks
+
+---
+
+## 🚀 Quick Reference
+
+### **For Immediate Analysis**:
+```bash
+cd scripts/
+python step1_explore_spss_data.py    # Explore with missing data analysis
+python step2_variable_selection.py   # Configure with quality warnings
+python step3_execute_analysis.py     # Execute selected analysis
+```
+
+### **For Custom Notebooks**:
+Use the traditional prompts throughout this guide to create custom analysis notebooks.
+
+### **For Comprehensive Reports**:
+```bash
+python generate_unified_report.py    # Generate complete analysis report
+```
+
+### **Results Location**:
+All outputs saved in: `scripts/results/`
+
+---
+
+*This guide combines traditional SPSS analysis capabilities with modern Python data science workflows, enhanced with comprehensive missing data analysis and organized file management for professional analysis workflows.*

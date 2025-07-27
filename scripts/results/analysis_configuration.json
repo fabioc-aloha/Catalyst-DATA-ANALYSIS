@@ -1,0 +1,84 @@
+{
+  "analysis_info": {
+    "dataset_name": "RETAIL_STORES_ANALYSIS",
+    "spss_filename": "DBA 710 Multiple Stores.sav",
+    "analysis_title": "Retail Store Performance Analysis",
+    "business_domain": "Retail Operations",
+    "analysis_date": "2025-07-27T16:29:36.893684"
+  },
+  "missing_data_assessment": {
+    "suitable_variables": [
+      "OWNERSHIP",
+      "STATE",
+      "FACTYPE",
+      "BLDGAGE",
+      "ROISCORE",
+      "CUSTSCORE",
+      "SETTING",
+      "PRODMIX"
+    ],
+    "caution_variables": [],
+    "exclude_variables": [],
+    "overall_data_quality": "excellent"
+  },
+  "variable_selection": {
+    "key_variables": [],
+    "grouping_variable": "",
+    "outcome_variable": "",
+    "control_variables": []
+  },
+  "analysis_focus": {
+    "primary_questions": [],
+    "statistical_tests": [],
+    "business_objectives": []
+  },
+  "suggested_configurations": [
+    {
+      "name": "Customer Satisfaction Analysis",
+      "key_variables": [
+        "CUSTSCORE",
+        "ROISCORE",
+        "BLDGAGE"
+      ],
+      "grouping_variable": "OWNERSHIP",
+      "outcome_variable": "CUSTSCORE",
+      "focus": "How does ownership type affect customer satisfaction?",
+      "missing_data_notes": "All variables have excellent data quality (0% missing)"
+    },
+    {
+      "name": "Business Performance Analysis",
+      "key_variables": [
+        "ROISCORE",
+        "CUSTSCORE",
+        "BLDGAGE"
+      ],
+      "grouping_variable": "FACTYPE",
+      "outcome_variable": "ROISCORE",
+      "focus": "What factors drive ROI performance?",
+      "missing_data_notes": "All variables have excellent data quality (0% missing)"
+    },
+    {
+      "name": "Geographic Analysis",
+      "key_variables": [
+        "CUSTSCORE",
+        "ROISCORE"
+      ],
+      "grouping_variable": "STATE",
+      "outcome_variable": "CUSTSCORE",
+      "focus": "Do performance metrics vary by state?",
+      "missing_data_notes": "All variables have excellent data quality (0% missing)"
+    },
+    {
+      "name": "Comprehensive Store Analysis",
+      "key_variables": [
+        "CUSTSCORE",
+        "ROISCORE",
+        "BLDGAGE"
+      ],
+      "grouping_variable": "SETTING",
+      "outcome_variable": "CUSTSCORE",
+      "focus": "Complete analysis of all store factors",
+      "missing_data_notes": "All variables have excellent data quality (0% missing)"
+    }
+  ]
+}

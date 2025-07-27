@@ -59,7 +59,7 @@ def comprehensive_data_import(file_path):
 # Unified script customization for satisfaction analysis
 def customize_satisfaction_template(dataset_info, business_context):
     """Adapt unified reporting template for satisfaction analysis"""
-    
+
     customization = {
         'DATASET_NAME': f"SATISFACTION_{business_context['domain'].upper()}",
         'KEY_VARIABLES': dataset_info['satisfaction_scales'],
@@ -68,7 +68,7 @@ def customize_satisfaction_template(dataset_info, business_context):
         'BUSINESS_DOMAIN': business_context['domain'],
         'ANALYSIS_TITLE': f"{business_context['domain']} Satisfaction Analysis"
     }
-    
+
     return customization
 ```
 

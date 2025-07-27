@@ -24,10 +24,10 @@ execution_context: "standalone script generation for SPSS data analysis"
 ```python
 def assess_spss_dataset(spss_file_path):
     """Comprehensive assessment of SPSS dataset for template customization"""
-    
+
     # Load with metadata preservation
     data, metadata = pyreadstat.read_sav(spss_file_path)
-    
+
     assessment = {
         'shape': data.shape,
         'variables': list(data.columns),
@@ -40,20 +40,20 @@ def assess_spss_dataset(spss_file_path):
             'value_labels': metadata.value_labels if metadata.value_labels else {}
         }
     }
-    
+
     return data, assessment
 
 # Business context identification
 def identify_business_context(assessment):
     """Identify likely business domain and analysis focus"""
-    
+
     variable_patterns = {
         'satisfaction': ['satisfaction', 'sat', 'happy', 'pleased'],
         'performance': ['performance', 'rating', 'score', 'evaluation'],
         'demographics': ['age', 'gender', 'income', 'education'],
         'behavior': ['usage', 'frequency', 'purchase', 'visit']
     }
-    
+
     # Pattern matching logic for domain identification
     context = analyze_variable_patterns(assessment['variables'], variable_patterns)
     return context
@@ -92,7 +92,7 @@ OUTCOME_VARIABLE = 'PrimaryOutcome'  # Main dependent variable
 # Business insights template (customize for your domain)
 KEY_INSIGHTS_TEMPLATE = [
     "Domain-specific insight template 1",
-    "Business interpretation framework 2", 
+    "Business interpretation framework 2",
     "Strategic recommendation pattern 3"
 ]
 
@@ -113,7 +113,7 @@ KEY_INSIGHTS_TEMPLATE = [
 ```python
 def validate_generated_script(script_path, test_data_path):
     """Comprehensive validation of generated unified reporting script"""
-    
+
     validation_results = {
         'syntax_check': check_python_syntax(script_path),
         'dependency_validation': validate_imports(script_path),
@@ -121,7 +121,7 @@ def validate_generated_script(script_path, test_data_path):
         'output_validation': validate_report_generation(script_path),
         'quality_metrics': assess_report_quality(script_path)
     }
-    
+
     return validation_results
 ```
 
@@ -139,7 +139,7 @@ def validate_generated_script(script_path, test_data_path):
 ```python
 def generate_executive_summary(analysis_results, business_context):
     """Create executive-level summary with strategic recommendations"""
-    
+
     summary_components = {
         'key_findings': extract_primary_insights(analysis_results),
         'business_impact': quantify_business_implications(analysis_results),
@@ -147,7 +147,7 @@ def generate_executive_summary(analysis_results, business_context):
         'confidence_levels': assess_finding_confidence(analysis_results),
         'next_steps': propose_follow_up_actions(analysis_results)
     }
-    
+
     return format_executive_summary(summary_components)
 ```
 

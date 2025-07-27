@@ -30,6 +30,153 @@ pip install pyreadstat factor-analyzer pingouin semopy
 ### 5-Minute SPSS File Analysis
 
 ```python
+# SPSS to Python Integration Manual
+
+**Version**: 2.0
+**Date**: July 27, 2025
+**Framework**: Alex's Bootstrap Learning Framework - Enhanced Multi-Step Workflow with Missing Data Analysis
+
+## 🚀 New Multi-Step Analysis Workflow
+
+**MAJOR UPDATE**: This guide now features a streamlined 3-step interactive analysis workflow with comprehensive missing data assessment and organized file management.
+
+### 🔥 Quick Start - Multi-Step Workflow (Recommended)
+
+For immediate analysis with missing data assessment, use the enhanced step-by-step scripts:
+
+```bash
+cd scripts/
+python step1_explore_spss_data.py    # Comprehensive data exploration
+python step2_variable_selection.py   # Variable selection with quality warnings
+python step3_execute_analysis.py     # Execute configured analysis
+```
+
+**Results**: All outputs automatically organized in `scripts/results/` folder.
+
+### ✨ Enhanced Features
+- **🎯 Comprehensive Missing Data Analysis**: Pattern detection, mechanism assessment (MCAR/MAR/MNAR)
+- **⚠️ Variable Quality Assessment**: Automated warnings and recommendations
+- **📁 Organized File Structure**: Professional output management
+- **🤖 Dynamic Script Generation**: Auto-creates analysis scripts based on data characteristics
+
+## Table of Contents
+
+1. [🆕 Multi-Step Workflow Guide](#multi-step-workflow-guide)
+2. [🎯 Missing Data Analysis Framework](#missing-data-analysis-framework)
+3. [Quick Start Guide](#quick-start-guide)
+4. [SPSS File Import and Setup](#spss-file-import-and-setup)
+5. [Common SPSS Procedures in Python](#common-spss-procedures-in-python)
+6. [Customer Satisfaction Survey Analysis](#customer-satisfaction-survey-analysis)
+7. [Advanced Analytics Beyond SPSS](#advanced-analytics-beyond-spss)
+8. [Troubleshooting and Best Practices](#troubleshooting-and-best-practices)
+9. [Resources and Further Learning](#resources-and-further-learning)
+
+---
+
+## 🆕 Multi-Step Workflow Guide
+
+### Step 1: Data Exploration with Missing Data Analysis
+**Script**: `step1_explore_spss_data.py`
+
+**Capabilities**:
+- Automatic SPSS file detection and loading
+- Variable type categorization (continuous, categorical, binary)
+- **Missing Data Pattern Analysis**: Identifies MCAR, MAR, MNAR patterns
+- **Completion Rate Assessment**: Variable-level missing data rates
+- **Quality Recommendations**: Data handling strategies based on missingness
+- SPSS metadata preservation (labels, value labels, measurement levels)
+
+**Output**: `scripts/results/spss_exploration_results.json`
+
+### Step 2: Variable Selection with Quality Warnings
+**Script**: `step2_variable_selection.py`
+
+**Capabilities**:
+- **Variable Quality Indicators**: Visual warnings for high missingness
+- **Automated Quality Categories**:
+  - ✅ Suitable (<15% missing)
+  - ⚠️ Caution (15-29% missing)
+  - ❌ Exclude (≥30% missing)
+- **Interactive Configuration Builder**: Guided analysis setup
+- **Missing Data Considerations**: Quality-based analysis recommendations
+- **Dynamic Script Generation**: Creates customized Step 3 analysis script
+
+**Output**: `scripts/results/analysis_configuration.json` + `step3_execute_analysis.py`
+
+### Step 3: Execute Analysis with Missing Data Handling
+**Script**: `step3_execute_analysis.py` (auto-generated)
+
+**Capabilities**:
+- Configuration-driven analysis execution
+- Missing data handling based on quality assessment
+- Statistical analysis with data quality notes
+- Professional results formatting
+- Export-ready outputs with methodological notes
+
+**Output**: Analysis results in `scripts/results/`
+
+---
+
+## 🎯 Missing Data Analysis Framework
+
+### Comprehensive Missing Data Assessment
+
+The enhanced workflow provides sophisticated missing data analysis:
+
+#### **Pattern Detection**:
+- **Complete Cases**: Variables with no missing data
+- **Monotone Patterns**: Predictable missing sequences
+- **Non-monotone Patterns**: Complex missing structures requiring investigation
+
+#### **Mechanism Assessment**:
+- **MCAR (Missing Completely at Random)**:
+  - Safe for listwise deletion
+  - Standard analysis approaches valid
+- **MAR (Missing at Random)**:
+  - Recommend multiple imputation
+  - Pattern depends on observed variables
+- **MNAR (Missing Not at Random)**:
+  - Requires specialized handling
+  - Missing pattern related to unobserved values
+
+#### **Quality-Based Recommendations**:
+- **High Quality** (<5% missing): Proceed with standard analysis
+- **Good Quality** (5-14% missing): Monitor but generally safe
+- **Caution Required** (15-29% missing): Consider imputation or sensitivity analysis
+- **High Risk** (≥30% missing): Investigate before inclusion, consider exclusion
+
+---
+
+## Quick Start Guide
+
+### Prerequisites
+
+Ensure you have Python 3.11+ and the following packages installed:
+
+```bash
+pip install pandas numpy scipy statsmodels scikit-learn matplotlib seaborn
+pip install pyreadstat factor-analyzer pingouin semopy
+```
+
+### 🔥 5-Minute Multi-Step Analysis
+
+```bash
+# Navigate to scripts directory
+cd scripts/
+
+# Step 1: Comprehensive exploration with missing data analysis
+python step1_explore_spss_data.py
+
+# Step 2: Variable selection with quality warnings
+python step2_variable_selection.py
+
+# Step 3: Execute analysis (auto-generated based on your data)
+python step3_execute_analysis.py
+```
+
+### Traditional 5-Minute SPSS File Analysis
+
+```python
 # Import essential libraries
 import pandas as pd
 import pyreadstat
@@ -40,13 +187,26 @@ import numpy as np
 df, meta = pyreadstat.read_sav('your_survey_data.sav')
 print(f"Data shape: {df.shape}")
 
-# 2. Quick descriptive analysis (equivalent to SPSS DESCRIPTIVES)
-print("\nDescriptive Statistics:")
+# 2. Enhanced missing data analysis
+missing_summary = df.isnull().sum()
+missing_percent = (missing_summary / len(df)) * 100
+print("
+Missing Data Analysis:")
+for var, pct in missing_percent.items():
+    if pct > 0:
+        quality = "✅ Good" if pct < 15 else "⚠️ Caution" if pct < 30 else "❌ High Risk"
+        print(f"{var}: {pct:.1f}% missing - {quality}")
+
+# 3. Quick descriptive analysis (equivalent to SPSS DESCRIPTIVES)
+print("
+Descriptive Statistics:")
 print(df.describe())
 
-# 3. Reliability analysis (equivalent to SPSS RELIABILITY)
+# 4. Reliability analysis (equivalent to SPSS RELIABILITY)
 # Define your scale items
 satisfaction_items = ['sat1', 'sat2', 'sat3', 'sat4']  # Replace with your variables
+
+````
 
 def cronbach_alpha(df, items):
     """Calculate Cronbach's Alpha"""
