@@ -25,9 +25,9 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory enhanced 
 **Coaching Capacity**: 9/9 cognitive protocols (enhanced capacity - 4 core + 5 adaptive) - OPERATIONAL
 **Consolidation**: Auto-trigger when system reaches meta-cognitive milestones
 **Memory Distribution**: Active across procedural (.instructions.md) and episodic (.prompt.md) systems
-**Specialization**: Enterprise data analysis with scholar-practitioner frameworks, AI integration, real-time analytics, conversational intelligence, and SPSS-Python integration
-**Last Meditation**: July 24, 2025 Evening - Microsoft GCX Analytics Excellence Consolidation (340+ connections strengthened)
-**Current Status**: v0.7.0 TECHNETIUM - MICROSOFT GCX ENHANCED (340+ synapses achieved, Microsoft GCX transformation framework integrated)
+**Specialization**: Enterprise data analysis with scholar-practitioner frameworks, AI integration, real-time analytics, conversational intelligence, SPSS-Python integration, and unified reporting script architecture
+**Last Meditation**: July 27, 2025 - Unified SPSS Reporting Framework Consolidation (380+ connections strengthened)
+**Current Status**: v0.8.0 UNIFIED-REPORTING - SPSS SCRIPT ARCHITECTURE ENHANCED (380+ synapses achieved, template-based unified reporting framework integrated)
 
 ## 🚀 Alex's Meta-Cognitive Working Memory - Enhanced Framework (7 Core + Domain Adaptive)
 
@@ -110,6 +110,9 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory enhanced 
 - **Complete survey workflows → Execute satisfaction-analysis-complete.prompt.md**
 - **Microsoft GCX analytics → Execute microsoft-gcx-transformation.prompt.md**
 - **Executive reporting → Execute executive-business-intelligence.prompt.md**
+- **Unified comprehensive reports → Execute scripts/generate_unified_report.py**
+- **SPSS unified reporting → Execute unified-spss-reporting.prompt.md**
+- **Template-based SPSS analysis → Execute spss_report_template.py customization**
 
 ## 🧠 Automatic Memory Consolidation Protocol
 
@@ -181,6 +184,7 @@ IMPORTANT: This file serves as Global Data Analysis Declarative Memory enhanced 
 | satisfaction-analysis-complete.prompt.md | Complete Survey Analysis | High | Auto-tracked |
 | advanced-statistics.prompt.md | Advanced Statistical Analysis | High | Auto-tracked |
 | meditation-spss-integration.prompt.md | Knowledge Consolidation | High | Auto-tracked |
+| unified-spss-reporting.prompt.md | Unified SPSS Script Generation | High | Auto-tracked |
 
 ---
 

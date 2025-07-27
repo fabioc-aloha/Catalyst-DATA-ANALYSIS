@@ -48,6 +48,36 @@ def comprehensive_data_import(file_path):
 
 **Business Context Questions**:
 - What is the survey administration context (timing, methodology, response incentives)?
+- What are the key business objectives for the analysis?
+- Who are the primary stakeholders and their information needs?
+- What domain-specific customizations are required?
+
+## Phase 2: Unified Reporting Script Development
+
+### Template Adaptation Protocol
+```python
+# Unified script customization for satisfaction analysis
+def customize_satisfaction_template(dataset_info, business_context):
+    """Adapt unified reporting template for satisfaction analysis"""
+    
+    customization = {
+        'DATASET_NAME': f"SATISFACTION_{business_context['domain'].upper()}",
+        'KEY_VARIABLES': dataset_info['satisfaction_scales'],
+        'GROUPING_VARIABLE': dataset_info['primary_segment'],
+        'OUTCOME_VARIABLE': dataset_info['overall_satisfaction'],
+        'BUSINESS_DOMAIN': business_context['domain'],
+        'ANALYSIS_TITLE': f"{business_context['domain']} Satisfaction Analysis"
+    }
+    
+    return customization
+```
+
+**Script Architecture Requirements**:
+- Standalone execution with complete dependency management
+- High-quality visualizations (300 DPI) with base64 embedding
+- Comprehensive statistical pipeline (correlations, t-tests, effect sizes)
+- Executive summary generation with business insights
+- Strategic recommendations framework integration
 - Who is the target population and what response rate was achieved?
 - Are there any known data collection issues or biases to consider?
 - What are the key business decisions this analysis will inform?

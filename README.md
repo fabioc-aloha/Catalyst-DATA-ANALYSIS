@@ -148,6 +148,10 @@ DATA-ANALYSIS/
 │   ├── modeling/                  # Statistical modeling
 │   ├── visualization/             # Data visualization
 │   └── reports/                   # Final reports
+├── scripts/
+│   ├── generate_unified_report.py # Standalone comprehensive report generator
+│   ├── results/                   # Generated analysis reports
+│   └── README.md                  # Scripts documentation
 ├── data/
 │   ├── raw/                       # Original data files
 │   ├── processed/                 # Cleaned datasets
@@ -184,6 +188,26 @@ DATA-ANALYSIS/
 - **Automated Reporting**: Scheduled analysis and dashboard updates
 - **Scalable Processing**: Distributed computing for large datasets
 - **Security**: Data encryption, access controls, audit trails
+
+## 🤖 Automated Analysis Scripts
+
+### Unified Report Generation
+The project includes standalone Python scripts for automated comprehensive analysis:
+
+```bash
+# Generate comprehensive unified analysis report
+cd scripts/
+python generate_unified_report.py
+```
+
+**Features:**
+- **📊 Complete Statistical Analysis**: Correlation, t-tests, normality testing, SEM
+- **📈 High-Resolution Visualizations**: 3 embedded PNG charts at 300 DPI
+- **📋 Executive Summary**: Business insights and strategic recommendations
+- **🎯 Microsoft GCX Framework**: Customer experience analytics excellence
+- **💾 Self-Contained Output**: Single 1.2MB Markdown file with all analyses
+
+**Output Location:** `scripts/results/` directory
 
 ## 🧠 Meta-Cognitive Commands
 

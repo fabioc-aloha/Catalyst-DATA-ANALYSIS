@@ -93,11 +93,71 @@ from factor_analyzer import FactorAnalyzer, calculate_kmo, calculate_bartlett_sp
 - Generate interactive dashboards with drill-down functionality
 - Create automated report generation with natural language insights
 
+## Unified Reporting Script Architecture
+
+### Template-Based Analysis Framework
+**Core Pattern for Reusable SPSS Analysis Scripts**:
+```python
+# Unified reporting script structure for any SPSS dataset
+#!/usr/bin/env python3
+"""
+UNIFIED COMPREHENSIVE ANALYSIS REPORT GENERATOR
+Template for creating standalone SPSS analysis scripts
+"""
+
+# Standard dependency pattern
+import sys, os, pandas as pd, numpy as np
+import matplotlib.pyplot as plt, seaborn as sns
+from scipy import stats
+import pyreadstat  # Critical for SPSS .sav file loading
+import datetime
+from io import BytesIO
+import base64
+
+# Customization variables (modify for each dataset)
+DATASET_NAME = "BUSINESS_SPECIFIC_NAME"
+SPSS_FILENAME = "data_file.sav"
+KEY_VARIABLES = ['Variable1', 'Variable2', 'Variable3']
+GROUPING_VARIABLE = 'CategoricalVar'
+OUTCOME_VARIABLE = 'PrimaryOutcome'
+```
+
+**Statistical Pipeline Requirements**:
+- Correlation analysis with significance testing
+- Normality assessment (Shapiro-Wilk tests)
+- Group comparisons (independent t-tests)
+- Effect size calculations (Cohen's d)
+- High-quality visualizations (300 DPI)
+- Base64 embedded charts for self-contained reports
+
+**Quality Standards**:
+- Standalone script execution capability
+- Comprehensive error handling and validation
+- Business-ready executive summaries
+- Strategic recommendations framework
+- Complete methodology documentation
+
 ## User Interaction and Communication Protocols
 
 ### Analysis Request Handling
 **Request Interpretation**:
 - Parse user requests for specific SPSS procedures
+- Translate SPSS syntax to enhanced Python equivalents
+- Suggest additional analyses not available in SPSS
+- Provide step-by-step guidance for complex procedures
+
+**Template Customization Guidance**:
+- Assess new SPSS dataset structure and variables
+- Map business concepts to available variables
+- Customize statistical pipeline for domain requirements
+- Adapt visualizations for stakeholder audiences
+- Generate domain-specific insights and recommendations
+
+**Communication Excellence**:
+- Explain statistical concepts in business terms
+- Provide practical interpretation of results
+- Include effect size and practical significance discussion
+- Generate actionable recommendations with confidence levels
 - Identify required variables and analytical objectives
 - Suggest enhanced Python alternatives when appropriate
 - Confirm analytical approach before implementation
