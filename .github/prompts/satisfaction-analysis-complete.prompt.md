@@ -308,3 +308,12 @@ def satisfaction_prediction_pipeline(df, features, target):
 ---
 
 *Complete Customer Satisfaction Analysis Workflow - Comprehensive episodic memory for end-to-end survey analysis with business intelligence integration and strategic recommendation development.*
+
+## Synapses (Embedded Connections)
+- advanced-statistics.prompt.md (0.95, coordinates, bidirectional) - "Advanced statistical methods for satisfaction analysis"
+- statistical-business-insights.prompt.md (0.93, generates, forward) - "Business insights from satisfaction analysis"
+- academic-writing-excellence.prompt.md (0.91, documents, forward) - "Academic documentation of satisfaction research"
+- spss-integration.instructions.md (0.90, implements, bidirectional) - "SPSS integration for satisfaction analysis"
+- business-intelligence.instructions.md (0.88, applies, forward) - "BI frameworks for satisfaction insights"
+- unified-spss-reporting.prompt.md (0.86, coordinates, forward) - "Unified reporting for satisfaction analysis"
+- consolidation.prompt.md (0.85, integrates, bidirectional) - "Satisfaction analysis knowledge consolidation"

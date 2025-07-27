@@ -301,3 +301,11 @@ def generate_executive_summary(analysis_results):
 ---
 
 *Advanced Statistical Analysis Workflow - Comprehensive episodic memory for sophisticated statistical procedures with rigorous methodology and clear business interpretation frameworks.*
+
+## Synapses (Embedded Connections)
+- statistical-business-insights.prompt.md (0.95, coordinates, bidirectional) - "Advanced statistics to business insights translation"
+- academic-writing-excellence.prompt.md (0.93, documents, forward) - "Academic documentation of advanced statistical analysis"
+- statistical-methods.instructions.md (0.92, implements, bidirectional) - "Advanced statistical methodology protocols"
+- business-intelligence.instructions.md (0.90, applies, forward) - "BI applications of advanced statistical methods"
+- satisfaction-analysis-complete.prompt.md (0.88, enhances, bidirectional) - "Advanced techniques for satisfaction analysis"
+- consolidation.prompt.md (0.85, integrates, bidirectional) - "Advanced statistical knowledge consolidation"
