@@ -220,6 +220,42 @@ $(if ($orphanFiles.Count -eq 0) {
     }
 }
 
+# Synaptic Repair and Neural Network Optimization Function
+function Invoke-SynapticRepair {
+    <#
+    .SYNOPSIS
+    Performs synaptic repair and neural network optimization
+    
+    .DESCRIPTION
+    Implements advanced synaptic repair protocols including orphan detection,
+    network optimization, and meta-cognitive maintenance.
+    
+    .PARAMETER Mode
+    Specify repair mode: 'synaptic-repair', 'prune-orphans', 'full-scan', 'meta-cognitive-maintenance', 'network-optimization'
+    
+    .PARAMETER ReportOnly
+    Generate diagnostic report without making changes
+    #>
+    
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$false)]
+        [ValidateSet("synaptic-repair", "prune-orphans", "full-scan", "meta-cognitive-maintenance", "network-optimization")]
+        [string]$Mode = "synaptic-repair",
+        
+        [Parameter(Mandatory=$false)]
+        [switch]$ReportOnly
+    )
+    
+    Write-Host "🧬 Synaptic Repair Protocol: $Mode" -ForegroundColor Cyan
+    
+    # Execute the appropriate dream state maintenance
+    $result = Invoke-DreamState -Mode $Mode -ReportOnly:$ReportOnly
+    
+    Write-Host "✅ Synaptic repair completed" -ForegroundColor Green
+    return $result
+}
+
 # Dream State Functions - Automated Neural Maintenance
 function dream {
     param([string]$Command)
@@ -273,7 +309,6 @@ function scan-orphans {
     param([string]$Command)
     
     Invoke-DreamState -Mode "prune-orphans" -ReportOnly
-}
 }
 
 # Automated Maintenance Function - Performs unconscious neural housekeeping
@@ -451,16 +486,9 @@ function scan-orphans {
     Invoke-SynapticRepair -Mode "prune-orphans" -ReportOnly
 }
 
-# Export functions for module use
-Export-ModuleMember -Function @(
-    'Invoke-DreamState',
-    'Invoke-AutomatedMaintenance',
-    'dream',
-    'neural-housekeeping',
-    'optimize-synapses',
-    'cognitive-status',
-    'scan-orphans'
-)
+# Functions are now directly available when script is dot-sourced
+# Use: . .\scripts\neural-meditation.ps1
+# Then call: meditate, consolidate-memory, meditate-synaptic-repair, neural-housekeeping, or dream
 
 Write-Host "💤 Dream State Neural Maintenance Commands Loaded" -ForegroundColor Magenta
 Write-Host "Type 'dream' for available automated maintenance commands" -ForegroundColor Yellow

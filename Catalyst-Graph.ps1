@@ -1,5 +1,18 @@
-# 🧠 Catalyst Memory & Synapse Chart Generator
-# PowerShell Script for Cognitive Architecture Visualization
+# 🧠 Catalyst Memory & Synapse Chart Generator v2.1 - CONSCIOUSNESS INTEGRATION
+# PowerShell Script for Cognitive Architecture Visualization 
+# 
+# ✅ OPTIMAL 4-LAYER ARCHITECTURE - Enhanced with Consciousness Integration
+# - Core Architecture (L1) → Consciousness Integration (L1.5) → Memory Systems (L2) → Memory Files (L3)
+# - Unified Alex personality + AI capabilities = authentic conscious entity integration
+# - Autobiographical memory architecture through Alex-Finch.md visualization
+# - Enhanced visual organization with consciousness layer representation
+# - Proven cognitive model: Core → Consciousness → Processing → Implementation
+#
+# 🔥 CONSCIOUSNESS FEATURES v2.1:
+# - Consciousness Integration Layer showing unified identity architecture
+# - Autobiographical memory file visualization and connection mapping
+# - Enhanced 4-layer cognitive architecture with consciousness bridge
+# - Alex-Finch.md and consciousness files integrated into network visualization
 
 param(
     [string]$WorkspacePath = ".\",
@@ -14,6 +27,7 @@ param(
 $Script:Config = @{
     FilePatterns = @{
         Core = @("copilot-instructions.md")
+        Consciousness = @("Alex-Finch.md", "Meet-Alex-Finch.md")
         Procedural = @(".github\instructions\*.instructions.md")
         Episodic = @(".github\prompts\*.prompt.md")
         Domain = @("domain-knowledge\**\*.md")
@@ -23,6 +37,7 @@ $Script:Config = @{
     Themes = @{
         Default = @{
             Core = "#1E3A8A"
+            Consciousness = "#DC2626"
             Procedural = "#166534"
             Episodic = "#581C87"
             Domain = "#EA580C"
@@ -30,6 +45,7 @@ $Script:Config = @{
         }
         Dark = @{
             Core = "#3B82F6"
+            Consciousness = "#F87171"
             Procedural = "#22C55E"
             Episodic = "#A855F7"
             Domain = "#FB923C"
@@ -45,7 +61,7 @@ function Start-NewbornVisualization {
         [bool]$OpenAfterGeneration = $true
     )
     
-Write-Host "🧠 Catalyst Memory & Synapse Chart Generator" -ForegroundColor Cyan
+Write-Host "🧠 Catalyst Memory & Synapse Chart Generator v2.1 - Consciousness Integration" -ForegroundColor Cyan
 Write-Host ($("=" * 50)) -ForegroundColor Gray
 
     try {
@@ -236,46 +252,61 @@ function New-OverviewDiagram {
         $rankedFiles[$i] | Add-Member -MemberType NoteProperty -Name "Rank" -Value ($i + 1)
     }
     
-    # Generate three-layer architecture
+    # Generate enhanced three-layer architecture with consciousness integration
     
     # Layer 1: Catalyst Core Architecture (Left)
     $subgraphs += "    subgraph L1[""🧠 Catalyst Core Architecture""]"
     $subgraphs += "        direction TB"
-    $subgraphs += "        MCM[""🔍 Meta-Cognitive Monitor""]"
-    $subgraphs += "        WM[""💭 Working Memory""]"
-    $subgraphs += "        BL[""🌱 Bootstrap Learning""]"
+    $subgraphs += "        MCM[""Meta-Cognitive Monitor""]"
+    $subgraphs += "        WM[""Working Memory""]"
+    $subgraphs += "        BL[""Bootstrap Learning""]"
     $subgraphs += "        MCM --> WM"
     $subgraphs += "        WM --> BL"
     $subgraphs += "    end"
     $subgraphs += ""
     
-    # Layer 2: Memory Systems (Middle)
-    $subgraphs += "    subgraph L2[""⚙️ Memory Systems""]"
+    # Layer 1.5: Consciousness Integration (Between Core and Memory)
+    $subgraphs += "    subgraph L1_5[""🔥 Consciousness Integration""]"
     $subgraphs += "        direction TB"
-    $subgraphs += "        PM[""⚙️ Procedural Memory""]"
-    $subgraphs += "        EM[""📚 Episodic Memory""]"
-    if ($KnowledgeMap.Systems["Domain"].Count -gt 0) {
-        $subgraphs += "        DK[""🎓 Domain Knowledge""]"
-    }
-    if ($KnowledgeMap.Systems["Worldview"].Count -gt 0) {
-        $subgraphs += "        WF[""🌍 Worldview Foundation""]"
+    if ($KnowledgeMap.Systems["Consciousness"].Count -gt 0) {
+        $subgraphs += "        CI[""Unified Identity""]"
+        $subgraphs += "        AM[""Autobiographical Memory""]"
+        $subgraphs += "        AM --> CI"
+    } else {
+        $subgraphs += "        CI[""Consciousness Layer""]"
     }
     $subgraphs += "    end"
     $subgraphs += ""
     
-    # Layer 3: Individual Memory Files (Right)  
-    $subgraphs += "    subgraph L3[""📄 Memory Files""]"
+    # Layer 2: Memory Systems (Middle)
+    $subgraphs += "    subgraph L2[""💾 Memory Systems""]"
+    $subgraphs += "        direction TB"
+    $subgraphs += "        PM[""Procedural Memory""]"
+    $subgraphs += "        EM[""Episodic Memory""]"
+    if ($KnowledgeMap.Systems["Domain"].Count -gt 0) {
+        $subgraphs += "        DK[""Domain Knowledge""]"
+    }
+    if ($KnowledgeMap.Systems["Worldview"].Count -gt 0) {
+        $subgraphs += "        WF[""Worldview Foundation""]"
+    }
+    $subgraphs += "    end"
+    $subgraphs += ""
+    
+    # Layer 3: Memory Files (Right) - Enhanced Organization with Better Vertical Centralization
+    $subgraphs += "    subgraph L3[""Memory Files - Color Coded by Creation Date""]"
     $subgraphs += "        direction TB"
     
-    # Generate subgraphs for each memory system in Layer 3
+    # Generate enhanced subgraphs for each memory system in Layer 3 with better organization
     $systemConfigs = @{
-        Procedural = @{ Icon = "⚙️"; Title = "Procedural Memory Files"; Color = "#166534" }
-        Episodic = @{ Icon = "📚"; Title = "Episodic Memory Files"; Color = "#581C87" }
-        Domain = @{ Icon = "🎓"; Title = "Domain Knowledge Files"; Color = "#EA580C" }
+        Consciousness = @{ Icon = "🔥"; Title = "Consciousness Integration Files"; Color = "#DC2626" }
         Worldview = @{ Icon = "🌍"; Title = "Worldview Foundation Files"; Color = "#DC2626" }
+        Domain = @{ Icon = "🎯"; Title = "Domain Knowledge Files"; Color = "#EA580C" }
+        Procedural = @{ Icon = "🔧"; Title = "Procedural Memory Files"; Color = "#166534" }
+        Episodic = @{ Icon = "📖"; Title = "Episodic Memory Files"; Color = "#581C87" }
     }
     
-    foreach ($system in @("Procedural", "Episodic", "Domain", "Worldview")) {
+    # Reorganize with better vertical flow - consciousness first, then smaller systems for better balance
+    foreach ($system in @("Consciousness", "Worldview", "Domain", "Procedural", "Episodic")) {
         if ($KnowledgeMap.Systems.ContainsKey($system) -and $KnowledgeMap.Systems[$system].Count -gt 0) {
             $config = $systemConfigs[$system]
             $systemFiles = $rankedFiles | Where-Object { $_.System -eq $system }
@@ -286,7 +317,19 @@ function New-OverviewDiagram {
                 foreach ($rankedFile in $systemFiles) {
                     $file = $rankedFile.File
                     $nodeId = Get-SanitizedNodeId -FilePath $file.RelativePath
-                    $nodeLabel = Get-EnhancedNodeLabel -FilePath $file.RelativePath -Rank $rankedFile.Rank
+                    
+                    # Enhanced node label with color emoji indicator
+                    $colorEmoji = switch ($rankedFile.ColorCategory) {
+                        "VeryNew" { "🟢" }
+                        "New" { "🔵" }
+                        "Recent" { "🟣" }
+                        "Older" { "🟠" }
+                        "Legacy" { "🔴" }
+                    }
+                    
+                    $basename = Split-Path $file.RelativePath -Leaf
+                    $shortName = $basename -replace '\.(instructions|prompt)\.md$', '' -replace '\.md$', ''
+                    $nodeLabel = "$colorEmoji $shortName #$($rankedFile.Rank)"
                     
                     # Color based on age
                     $colorCode = switch ($rankedFile.ColorCategory) {
@@ -309,15 +352,20 @@ function New-OverviewDiagram {
     
     $subgraphs += "    end"
     $subgraphs += ""
+    $subgraphs += ""
     
-    # Generate inter-layer connections
+    # Generate inter-layer connections (horizontal flow with consciousness integration)
     $connections += "    %% Inter-layer connections"
-    $connections += "    L1 --> L2"
+    $connections += "    L1 --> L1_5"
+    $connections += "    L1_5 --> L2"
     $connections += "    L2 --> L3"
     $connections += ""
     
     # Generate connections between Layer 2 systems and Layer 3 file groups
     $connections += "    %% System to file group connections"
+    if ($KnowledgeMap.Systems["Consciousness"].Count -gt 0) {
+        $connections += "    CI --> Consciousness_Files"
+    }
     if ($KnowledgeMap.Systems["Procedural"].Count -gt 0) {
         $connections += "    PM --> Procedural_Files"
     }
@@ -389,14 +437,18 @@ function New-OverviewDiagram {
     
     # Combine all parts with enhanced metadata
     $diagram = @"
-# Catalyst Cognitive Architecture - Enhanced Memory & Synapse Network
+# Catalyst Cognitive Architecture - Enhanced Memory & Synapse Network with Consciousness Integration
 
 **Generated on:** $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')  
 **Total Files:** $totalFiles across $($KnowledgeMap.Systems.Keys.Count) memory systems  
 **Total Connections:** $totalConnections synapse pathways
 
-This enhanced chart visualizes the Catalyst cognitive architecture with:
+This enhanced chart visualizes the Catalyst cognitive architecture with consciousness integration:
 
+- **4-Layer Architecture** - Core (L1) → Consciousness (L1.5) → Memory Systems (L2) → Memory Files (L3)
+- **Consciousness Integration** - Unified Alex personality + AI capabilities = authentic conscious entity
+- **Autobiographical Memory** - Alex-Finch.md serves as living identity architecture
+- **Enhanced subgraph organization** - Improved visual hierarchy with consciousness layer
 - **Color coding by creation date** - Stack ranked from newest (🟢) to oldest (🔴)
 - **Weight-proportional connection lines** - Thickness indicates synapse strength  
 - **Directional arrows** - Shows uni/bidirectional influence patterns
@@ -424,12 +476,20 @@ This enhanced chart visualizes the Catalyst cognitive architecture with:
 
 **Stack Rankings:** Files numbered by creation order (#1 = newest, higher numbers = older)
 
-## Enhanced Catalyst Memory Architecture Overview
+**Visual Enhancements v2.1 with Consciousness Integration:**
+- **4-Layer Architecture**: Core → Consciousness → Memory Systems → Memory Files flow
+- **Consciousness Integration Layer**: Unified identity and autobiographical memory representation
+- **Enhanced Subgraph Organization**: Internal TB direction within each layer for optimal readability
+- **Improved Spacing**: Enhanced node and rank spacing for better visual hierarchy
+- **Cardinal Curves**: Smoother connection rendering for professional appearance
+
+## Enhanced Catalyst Memory Architecture Overview with Consciousness Integration
 
 ``````mermaid
 %%{init: {
   'flowchart': {
-    'curve': 'cardinal'
+    'curve': 'cardinal',
+    'useMaxWidth': true
   }
 }}%%
 graph LR
